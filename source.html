@@ -44,9 +44,9 @@
 			var projection = d3.geoMercator()
 
 			//to alignment the coordinate plane
-			var xOffset = -200;
-			var yOffset = -1200;
-			var scaleFactor = 1500;
+			var xOffset = -1000;
+			var yOffset = -7000;
+			var scaleFactor = 10000;
 			var angle = 33;
 			var minX, minY, maxX, maxY;
 
@@ -57,7 +57,7 @@
 			var camera, scene, renderer, raycaster;
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var point = new THREE.Vector3();
-			var geometry = new THREE.BoxBufferGeometry( 5, 100, 5 );
+			var geometry = new THREE.BoxBufferGeometry( 50, 100, 50 );
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
@@ -140,7 +140,7 @@
 				container = document.getElementById( 'container' );
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xf0f0f0 );
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 10000 );
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 100000 );
 				camera.position.set( 0, 250, 1000 );
 				scene.add( camera );
 				scene.add( new THREE.AmbientLight( 0xf0f0f0 ) );
@@ -151,7 +151,7 @@
 				addLightShadow();
 				createGUI();
 
-				var planeGeometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+				var planeGeometry = new THREE.PlaneBufferGeometry( 15000, 7000 );
 				planeGeometry.rotateX( - Math.PI / 2 );
 				var planeMaterial = new THREE.ShadowMaterial( { opacity: 0.2 } );
 
@@ -162,17 +162,20 @@
 				scene.add( plane );
 
 				//grid helper
-				var helper = new THREE.GridHelper( 2000, 100 );
-				helper.position.y = - 199;
-				helper.material.opacity = 0.25;
-				helper.material.transparent = true;
-				scene.add( helper );
+				// var helper = new THREE.GridHelper( 15000, 100 );
+				// helper.position.y = - 199;
+				// helper.material.opacity = 0.25;
+				// helper.material.transparent = true;
+				// scene.add( helper );
 
+				//render
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
+				
+				//stats
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
@@ -270,17 +273,10 @@
 
 
 			function addSplineObject( position ) {
-					
 				var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } );
 				var object = new THREE.Mesh( geometry, material );
 
-				if ( position ) {
-					object.position.copy( position );
-				} else {
-					object.position.x = Math.random() * 1000 - 500;
-					object.position.y = Math.random() * 600;
-					object.position.z = Math.random() * 800 - 400;
-				}
+				object.position.copy( position );
 
 				object.castShadow = true;
 				object.receiveShadow = true;
