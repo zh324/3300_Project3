@@ -178,33 +178,6 @@
 
 				// Controls
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
-				controls.damping = 0.2;
-				controls.addEventListener( 'change', render );
-				controls.addEventListener( 'start', function() {
-					cancelHideTransorm();
-				} );
-				controls.addEventListener( 'end', function() {
-					delayHideTransform();
-				} );
-				
-			}
-
-
-			function delayHideTransform() {
-				cancelHideTransorm();
-				hideTransform();
-			}
-
-
-			function hideTransform() {
-				hiding = setTimeout( function() {
-					transformControl.detach( transformControl.object );
-				}, 2500 )
-			}
-
-
-			function cancelHideTransorm() {
-				if ( hiding ) clearTimeout( hiding );
 			}
 
 
@@ -212,7 +185,6 @@
 				requestAnimationFrame( animate );
 				render();
 				stats.update();
-				transformControl.update();
 			}
 
 
