@@ -111,7 +111,8 @@
 					return str;
 				};
 				var container, stats;
-				var camera, scene, renderer;
+				var camera, scene, renderer, raycaster;
+				var mouse = new THREE.Vector2(), INTERSECTED;
 				var splineHelperObjects = [], splineOutline;
 				var splinePointsLength = 4;
 				var positions = [];
@@ -154,6 +155,10 @@
 					camera.position.set( 0, 250, 1000 );
 					scene.add( camera );
 					scene.add( new THREE.AmbientLight( 0xf0f0f0 ) );
+
+					// add raycaster
+					raycaster = new THREE.Raycaster();
+
 					var light = new THREE.SpotLight( 0xffffff, 1.5 );
 					light.position.set( 0, 1500, 200 );
 					light.castShadow = true;
@@ -378,7 +383,26 @@
 					splines.uniform.mesh.visible = params.uniform;
 					splines.centripetal.mesh.visible = params.centripetal;
 					splines.chordal.mesh.visible = params.chordal;
+
+					// raycaster in reder
+					raycaster.setFromCamera( mouse, camera );
+					var intersects = raycaster.intersectObjects( scene.children );
+					if ( intersects.length > 0 ) {
+						if ( INTERSECTED != intersects[ 0 ].object ) {
+							if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+							INTERSECTED = intersects[ 0 ].object;
+							INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+							INTERSECTED.material.emissive.setHex( 0xff0000 );
+						}
+					} else {
+						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+						INTERSECTED = null;
+					}
+
+
 					renderer.render( scene, camera );
+					
+
 				}
 			});
 		</script>
