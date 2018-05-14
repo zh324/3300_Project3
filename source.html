@@ -124,8 +124,7 @@
 				init();
 				plot();
 				animate();
-				
-			
+
 				// function onMouseMove( event ) { 
 				// // calculate mouse position in normalized device coordinates 
 				// // (-1 to +1) for both components 
@@ -149,9 +148,7 @@
 				// add raycaster
 				raycaster = new THREE.Raycaster();
 
-				//add light and shadow
 				addLightShadow();
-
 				createGUI();
 
 				var planeGeometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
@@ -179,7 +176,6 @@
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
-			
 				// Controls
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.damping = 0.2;
@@ -189,22 +185,6 @@
 				} );
 				controls.addEventListener( 'end', function() {
 					delayHideTransform();
-				} );
-				transformControl = new THREE.TransformControls( camera, renderer.domElement );
-				transformControl.addEventListener( 'change', render );
-				scene.add( transformControl );
-				// Hiding transform situation is a little in a mess :()
-				transformControl.addEventListener( 'change', function( e ) {
-					cancelHideTransorm();
-				} );
-				transformControl.addEventListener( 'mouseDown', function( e ) {
-					cancelHideTransorm();
-				} );
-				transformControl.addEventListener( 'mouseUp', function( e ) {
-					delayHideTransform();
-				} );
-				transformControl.addEventListener( 'objectChange', function( e ) {
-					updateSplineOutline();
 				} );
 				
 			}
