@@ -167,12 +167,13 @@
 					container = document.getElementById( 'container' );
 					scene = new THREE.Scene();
 					scene.background = new THREE.Color( 0xf0f0f0 );
-					camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+					camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 10000 );
 					camera.position.set( 0, 250, 1000 );
 					scene.add( camera );
 					scene.add( new THREE.AmbientLight( 0xf0f0f0 ) );
 
 					// add raycaster
+					
 					raycaster = new THREE.Raycaster();
 
 					var light = new THREE.SpotLight( 0xffffff, 1.5 );
@@ -300,14 +301,14 @@
 
 				function plot() {
 					for (var i = 0; i < hotelData.length; i++) {
-						addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -200, hotelData[i].coordinate[1]));
+						addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]));
 					}
 					for (var i = 0; i < restaurantData.length; i++) {
-						addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -200, restaurantData[i].coordinate[1]));
+						addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]));
 
 					}
 					for (var i = 0; i < entertainmentData.length; i++) {
-						addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -200, entertainmentData[i].coordinate[1]));			
+						addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]));			
 					}					
 				}
 			
@@ -370,31 +371,58 @@
 					stats.update();
 					transformControl.update();
 				}
+				// function onMouseMove( event ) { 
+				// // calculate mouse position in normalized device coordinates 
+				// // (-1 to +1) for both components 
+				// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1; 
+				// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1; 
+				// } 
 				function render() {
 					splines.uniform.mesh.visible = params.uniform;
 					splines.centripetal.mesh.visible = params.centripetal;
 					splines.chordal.mesh.visible = params.chordal;
 
-					// raycaster in reder
+
+					// update the picking ray with the camera and mouse position
 					raycaster.setFromCamera( mouse, camera );
+
+					// calculate objects intersecting the picking ray
 					var intersects = raycaster.intersectObjects( scene.children );
-					if ( intersects.length > 0 ) {
-						if ( INTERSECTED != intersects[ 0 ].object ) {
-							if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-							INTERSECTED = intersects[ 0 ].object;
-							INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-							INTERSECTED.material.emissive.setHex( 0xff0000 );
-						}
-					} else {
-						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-						INTERSECTED = null;
+
+
+					for ( var i = 0; i < intersects.length; i++ ) {
+
+					intersects[ i ].object.material.color.set( 0xff0000 );
+
 					}
-
-
 					renderer.render( scene, camera );
+
+
+
+
+					// for(var p =0; p < INTERSECTED.material.materials.length; p++){
+					// 	INTERSECTED.currentHex = INTERSECTED.material.materials[p].emissive.getHex();
+					// }
 					
 
+				// if ( intersects.length > 0 ) {
+				// 	if ( INTERSECTED != intersects[ 0 ].object ) {
+				// 		if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+				// 		INTERSECTED = intersects[ 0 ].object;
+				// 		INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+				// 		INTERSECTED.material.emissive.setHex( 0xff0000 );
+				// 	}
+				// } else {
+				// 	if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+				// 	INTERSECTED = null;
+				// }
+
+
+					
 				}
+				// window.addEventListener( 'mousemove', onMouseMove, false );
+
+				// window.requestAnimationFrame(render);
 			});
 		</script>
 
