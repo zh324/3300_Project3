@@ -570,8 +570,8 @@
 			}
 
 
-			function addSplineObject( position, name) {
-				var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } );
+			function addSplineObject(position, name, colorStr) {
+				var material = new THREE.MeshLambertMaterial( { color: colorStr } );
 				var object = new THREE.Mesh( geometry, material );
 
 				// var object = createHospital();
@@ -606,17 +606,17 @@
 
 			function plot() {
 				for (var i = 0; i < hotelData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]), hotelData[i]["Company Name"]);
+					var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]), hotelData[i]["Company Name"], "green");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < restaurantData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"]);
+					var object = addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"], "red");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < entertainmentData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"]);			
+					var object = addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"], "yellow");			
 					objectCount++;
 					positions.push(object.position);
 				}					

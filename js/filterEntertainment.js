@@ -16,7 +16,7 @@ function updateEntertainment() {
         } else {
             console.log("entertainment data length: " + enter_filtered_data.length)
             for (var i = 0; i < enter_filtered_data.length; i++) {
-                var object = addSplineObject(new THREE.Vector3(enter_filtered_data[i].coordinate[0], -150, enter_filtered_data[i].coordinate[1]));
+                var object = addSplineObject(new THREE.Vector3(enter_filtered_data[i].coordinate[0], -150, enter_filtered_data[i].coordinate[1]), enter_filtered_data[i]["Company Name"], "yellow");
                 objectCount++;
                 positions.push(object.position);
             }
