@@ -192,14 +192,15 @@
 					<input id="restID" type="checkbox" onclick="updatePlot()">Restaurants
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:40%; float:left">
+					<div style="width:20%; float:left">
 						<p>Price</p>
-						<label><input type="checkbox">Cheap</label><br>
-						<label><input type="checkbox">Medium</label><br>
-						<label><input type="checkbox">Expensive</label>
+						<label><input id="restPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>
+						<label><input id="restPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
+						<label><input id="restPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
+						<label><input id="restPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
 					</div>
 
-					<div style="width:27%; float:left">
+					<div style="width:20%; float:left">
 						<p>Ratings</p>
 						<label><input type="checkbox">1</label><br>
 						<label><input type="checkbox">2</label><br>
@@ -208,11 +209,49 @@
 						<label><input type="checkbox">5</label>
 					</div>
 
-					<div style="width:33%; float:left">
+					<div style="width:30%; float: left">
+						<p>Regions</p>
+						<label><input id="restRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
+						<label><input id="restRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label><br>
+						<label><input id="restRegionLincoln" type="checkbox" onclick="updatePlot()">Lincoln Square</label><br>
+						<label><input id="restRegionSoho" type="checkbox" onclick="updatePlot()">Soho-TriBeCa-Civic Center-Little Italy</label>					
+					</div>
+
+					<div style="width:30%; float:left">
 						<p>Tastes</p>
-						<label><input type="checkbox">Chinese</label><br>
-						<label><input type="checkbox">Korean</label><br>
-						<label><input type="checkbox">American</label>
+						<label><input id="restTasteMexican" type="checkbox" onclick="updatePlot()">Mexican</label><br>
+						<label><input id="restTasteChinese" type="checkbox" onclick="updatePlot()">Chinese</label><br>
+						<label><input id="restTasteItalian" type="checkbox" onclick="updatePlot()">Italian</label><br>
+						<label><input id="restTasteFrench" type="checkbox" onclick="updatePlot()">French</label><br>
+						<label><input id="restTasteAmerican" type="checkbox" onclick="updatePlot()">American</label><br>
+						<label><input id="restTasteDiner" type="checkbox" onclick="updatePlot()">Diner</label><br>
+						<label><input id="restTasteFastfood" type="checkbox" onclick="updatePlot()">Fast Food</label><br>
+						<label><input id="restTasteDessert" type="checkbox" onclick="updatePlot()">Dessert</label><br>
+						<label><input id="restTasteThai" type="checkbox" onclick="updatePlot()">Thai</label><br>
+						<label><input id="restTasteSteakhouse" type="checkbox" onclick="updatePlot()">Steakhouse</label><br>
+						<label><input id="restTasteBarbecue" type="checkbox" onclick="updatePlot()">Barbecue</label><br>
+						<label><input id="restTastePanasian" type="checkbox" onclick="updatePlot()">Pan Asian</label><br>
+						<label><input id="restTasteRussian" type="checkbox" onclick="updatePlot()">Russian</label><br>
+						<label><input id="restTastePizza" type="checkbox" onclick="updatePlot()">Pizza</label><br>
+						<label><input id="restTasteTurkish" type="checkbox" onclick="updatePlot()">Turkish</label><br>
+						<label><input id="restTasteIdian" type="checkbox" onclick="updatePlot()">Indian</label><br>
+						<label><input id="restTasteJapanese" type="checkbox" onclick="updatePlot()">Japanese</label><br>
+						<label><input id="restTasteVietnamese" type="checkbox" onclick="updatePlot()">Vietnamese</label><br>
+						<label><input id="restTasteSeafood" type="checkbox" onclick="updatePlot()">Seafood</label><br>
+						<label><input id="restTasteCajun" type="checkbox" onclick="updatePlot()">Cajun</label><br>
+						<label><input id="restTasteChilean" type="checkbox" onclick="updatePlot()">Chilean</label><br>
+						<label><input id="restTasteBeverages" type="checkbox" onclick="updatePlot()">Beverages</label><br>
+						<label><input id="restTasteScottish" type="checkbox" onclick="updatePlot()">Scottish</label><br>
+						<label><input id="restTasteCatering" type="checkbox" onclick="updatePlot()">Catering</label><br>
+						<label><input id="restTasteBelgian" type="checkbox" onclick="updatePlot()">Belgian</label><br>
+						<label><input id="restTasteCuban" type="checkbox" onclick="updatePlot()">Cuban</label><br>
+						<label><input id="restTasteBrazilian" type="checkbox" onclick="updatePlot()">Brazilian</label><br>
+						<label><input id="restTasteOthers" type="checkbox" onclick="updatePlot()">Others</label><br>
+						<label><input id="restTasteArgentinian" type="checkbox" onclick="updatePlot()">Argentinian</label><br>
+						<label><input id="restTasteSpanish" type="checkbox" onclick="updatePlot()">Spanish</label>	
+						<label><input id="restTasteOrganic" type="checkbox" onclick="updatePlot()">Organic</label>
+						<label><input id="restTasteNonbeverages" type="checkbox" onclick="updatePlot()">Non beverages</label>
+						
 					</div>
 				</div>
 			</div>
@@ -223,14 +262,15 @@
 					<input id="hotelID" type="checkbox" onclick="updatePlot()">Hotels
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:40%; float:left">
+					<div style="width:33%; float:left">
 						<p>Price</p>
-						<label><input type="checkbox">Cheap</label><br>
-						<label><input type="checkbox">Medium</label><br>
-						<label><input type="checkbox">Expensive</label>
+						<label><input id="hotelPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>						
+						<label><input id="hotelPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
+						<label><input id="hotelPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
+						<label><input id="hotelPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
 					</div>
 
-					<div style="width:27%; float:left">
+					<div style="width:33%; float:left">
 						<p>Ratings</p>
 						<label><input type="checkbox">1</label><br>
 						<label><input type="checkbox">2</label><br>
@@ -240,9 +280,9 @@
 					</div>
 
 					<div style="width:33%; float:left">
-						<p>Type</p>
-						<label><input type="checkbox">Holiday</label><br>
-						<label><input type="checkbox">Business</label>
+						<p>Regions</p>
+						<label><input id="hotelRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
+						<label><input id="hotelRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label>
 					</div>
 				</div>
 			</div>
@@ -253,14 +293,15 @@
 					<input id="enterID" type="checkbox" onclick="updatePlot()">Entertainment
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:40%; float:left">
+					<div style="width:20%; float:left">
 						<p>Price</p>
-						<label><input type="checkbox">Cheap</label><br>
-						<label><input type="checkbox">Medium</label><br>
-						<label><input type="checkbox">Expensive</label>
+						<label><input id="enterPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>						
+						<label><input id="enterPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
+						<label><input id="enterPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
+						<label><input id="enterPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
 					</div>
 
-					<div style="width:27%; float:left">
+					<div style="width:20%; float:left">
 						<p>Ratings</p>
 						<label><input type="checkbox">1</label><br>
 						<label><input type="checkbox">2</label><br>
@@ -269,11 +310,25 @@
 						<label><input type="checkbox">5</label>
 					</div>
 
-					<div style="width:33%; float:left">
-						<p>Category</p>
-						<label><input type="checkbox">Movie</label><br>
-						<label><input type="checkbox">Shopping</label>
+					<div style="width:30%; float:left">
+						<p>Regions</p>
+						<label><input id="enterRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
+						<label><input id="enterRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label>
+						<label><input id="enterRegionOther" type="checkbox" onclick="updatePlot()">Others</label>
 					</div>
+
+					<div style="width:30%; float:left">
+						<p>Venue Types</p>
+						<label><input id="enterVenueTheater" type="checkbox" onclick="updatePlot()">Theater</label><br>
+						<label><input id="enterVenueComedy" type="checkbox" onclick="updatePlot()">Comedy Club</label><br>
+						<label><input id="enterVenueNightclub" type="checkbox" onclick="updatePlot()">Nightclub</label><br>
+						<label><input id="enterVenueAttraction" type="checkbox" onclick="updatePlot()">Attractions/Amusement</label><br>
+						<label><input id="enterVenueMovie" type="checkbox" onclick="updatePlot()">Movies</label><br>
+						<label><input id="enterVenueMuseum" type="checkbox" onclick="updatePlot()">Museums/Galleries</label><br>
+						<label><input id="enterVenueLivemusic" type="checkbox" onclick="updatePlot()">Live Music</label><br>
+						<label><input id="enterVenueLecturehall" type="checkbox" onclick="updatePlot()">Lecture Hall</label><br>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -289,6 +344,10 @@
 		<script src="js/three.interaction.js"></script>
 
 		<script src="js/dat.gui.min.js"></script>
+
+		<script src="js/filterRestaurants.js"></script>
+		<script src="js/filterHotels.js"></script>
+		<script src="js/filterEntertainment.js"></script>
 		<script>
 
 			var hotelData;
@@ -317,38 +376,6 @@
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
-			// var params = {
-			// 	restaurant: {
-			// 		include: true,
-			// 		price: 100,
-			// 		category: {
-			// 			chinese: true,
-			// 			korean: true,
-			// 			american: true,
-			// 			indian: true,
-			// 			italian: true
-			// 		}
-			// 	},
-			// 	hotel: {
-			// 		include: true,
-			// 		price: 100,
-			// 		category: {
-			// 			holiday: true,
-			// 			business: true
-			// 		}
-			// 	},
-			// 	entertainment: {
-			// 		include: true,
-			// 		price: 100,
-			// 		category: {
-			// 			movie: true,
-			// 			game: true,
-			// 			shopping: true
-			// 		}
-			// 	}
-			// };
-
-
 
 			//load csv file
 			d3.queue()
@@ -363,6 +390,8 @@
 					hotelData = data1;
 					restaurantData = data2;
 					entertainmentData = data3;
+					console.log(hotelData);
+					console.log(restaurantData);
 
 					assignCoordinate(hotelData);
 					assignCoordinate(restaurantData);
@@ -479,43 +508,6 @@
 			}
 
 
-			function createGUI() {
-				//GUI added
-				var gui = new dat.GUI();
-				var restaurant = gui.addFolder('Restaurants');
-				restaurant.add(params.restaurant, 'include').onFinishChange(updatePlot);
-				// restaurant.add(params.restaurant, 'rating', 1, 5).onFinishChange(updatePlot);
-				restaurant.add(params.restaurant, 'price', 0, 100).onFinishChange(updatePlot);
-				var restaurantCategory = restaurant.addFolder('Restaurant category');
-				restaurantCategory.add(params.restaurant.category, 'chinese').name('Chinese').onFinishChange(updatePlot);
-				restaurantCategory.add(params.restaurant.category, 'korean').name('Korean').onFinishChange(updatePlot);
-				restaurantCategory.add(params.restaurant.category, 'american').name('American').onFinishChange(updatePlot);
-				restaurantCategory.add(params.restaurant.category, 'indian').name('Indian').onFinishChange(updatePlot);
-				restaurantCategory.add(params.restaurant.category, 'italian').name('Italian').onFinishChange(updatePlot);
-				restaurant.open();
-
-				var hotel = gui.addFolder('Hotels');
-				hotel.add(params.hotel, 'include').onFinishChange(updatePlot);
-				// hotel.add(params.hotel, 'rating', 1, 5).onFinishChange(updatePlot);
-				hotel.add(params.hotel, 'price', 0, 100).onFinishChange(updatePlot);
-				var hotelCategory = hotel.addFolder('Hotel category');
-				hotelCategory.add(params.hotel.category, 'holiday').onFinishChange(updatePlot);
-				hotelCategory.add(params.hotel.category, 'business').onFinishChange(updatePlot);
-				hotel.open();
-
-				var entertainment = gui.addFolder('Entertainment');
-				entertainment.add(params.entertainment, 'include').onFinishChange(updatePlot);
-				entertainment.add(params.entertainment, 'rating', 1, 5).onFinishChange(updatePlot);
-				entertainment.add(params.entertainment, 'price', 1, 3).onFinishChange(updatePlot);
-				var entertainmentCategory = entertainment.addFolder('Entertainment category');
-				entertainmentCategory.add(params.entertainment.category, 'movie').onFinishChange(updatePlot);
-				entertainmentCategory.add(params.entertainment.category, 'game').onFinishChange(updatePlot);
-				entertainmentCategory.add(params.entertainment.category, 'shopping').onFinishChange(updatePlot);
-				entertainment.open();
-				gui.open();
-			}
-
-
 			function addSplineObject( position ) {
 				var material = new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } );
 				var object = new THREE.Mesh( geometry, material );
@@ -562,37 +554,11 @@
 				}					
 			}
 
-
 			function updatePlot() {
 				removeAllPoints();
-				var restaurant = document.getElementById('restID').checked;
-				var hotel = document.getElementById('hotelID').checked;
-				var entertainment = document.getElementById('enterID').checked;
-
-				if (restaurant == true) {
-					for (var i = 0; i < restaurantData.length; i++) {
-						var object = addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]));
-						objectCount++;
-						positions.push(object.position);
-					}
-				}
-
-				if (hotel== true) {
-					for (var i = 0; i < hotelData.length; i++) {
-						var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]));
-						objectCount++;
-						positions.push(object.position);
-					}
-				}
-				
-				if (entertainment == true) {
-					for (var i = 0; i < entertainmentData.length; i++) {
-						var object = addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]));			
-						objectCount++;
-						positions.push(object.position);
-					}
-				}
-						
+				updateRestaurant();
+				updateHotel();
+				updateEntertainment();				
 			}
 
 
