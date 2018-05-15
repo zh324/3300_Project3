@@ -624,9 +624,20 @@
 
 			function updatePlot() {
 				removeAllPoints();
-				updateRestaurant();
-				updateHotel();
-				updateEntertainment();				
+				var restaurant = document.getElementById('restID').checked;
+				var entertainment = document.getElementById('enterID').checked;
+				var hotel = document.getElementById('hotelID').checked;
+				if (!restaurant && !entertainment && !hotel) {
+					plot();
+				} else {
+					updateRestaurant();
+					updateHotel();
+					updateEntertainment();	
+				}
+			}
+
+			function doNothing() {
+
 			}
 
 
