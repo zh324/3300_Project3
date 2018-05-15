@@ -319,9 +319,11 @@
 		<script src="js/DragControls.js"></script>
 		<script src="js/OrbitControls.js"></script>
 		<script src="js/TransformControls.js"></script>
+		<script src="js/three.interaction.js"></script>
 
 		<script src="js/dat.gui.min.js"></script>
 		<script>
+
 			var hotelData;
 			var restaurantData;
 			var entertainmentData;
@@ -379,6 +381,8 @@
 				}
 			};
 
+
+
 			//load csv file
 			d3.queue()
 			.defer(d3.csv, "data/hotels.csv")
@@ -433,6 +437,8 @@
 
 				// add raycaster
 				raycaster = new THREE.Raycaster();
+// 				window.addEventListener( 'mousemove', onMouseMove, false );
+//                 window.requestAnimationFrame(render);
 
 				addLightShadow();
 				createGUI();
@@ -463,6 +469,9 @@
 
 				// Controls
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+				// interaction
+				var interaction = new THREE.Interaction(renderer, scene, camera);
 			}
 
 
@@ -473,13 +482,7 @@
 
 
 			function render() {
-				// update the picking ray with the camera and mouse position
-				raycaster.setFromCamera( mouse, camera );
-				// calculate objects intersecting the picking ray
-				var intersects = raycaster.intersectObjects( scene.children );
-				for ( var i = 0; i < intersects.length; i++ ) {
-					intersects[ i ].object.material.color.set( 0x000000 );
-				}
+
 				renderer.render( scene, camera );				
 			}
 
@@ -564,6 +567,20 @@
 
 				object.castShadow = true;
 				object.receiveShadow = true;
+				var oldcolor = object.material.color;
+				console.log(oldcolor)
+				object.on('mouseover', function(ev) {
+					object.material.color.setHex( 0xff0000 );
+					console.log('on' + oldcolor)
+				});
+				object.on('mouseout', function(ev) {
+					console.log(oldcolor)
+					object.material.color.setHex( oldcolor );
+					console.log("off")
+
+				});
+				
+
 				scene.add( object );
 				buildingObjects.push( object );
 				return object;
@@ -631,6 +648,8 @@
 				}
 				objectCount = 0;
 			}
+
+
 		</script>
 	</body>
 </html>
