@@ -6,14 +6,6 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
 		<style>
-			#info {
-				position: absolute;
-				top: 0px;
-				width: 100%;
-				padding: 5px;
-				font-size:20px;
-				text-align:center;
-			}
 			html, body {
       color: #333;
       font-family: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
@@ -172,8 +164,10 @@
 	</head>
 	<body>
 		<div id="container" width="2000" height="2000"></div>
+
+		<!--project information-->
 		<div class="title card">
-			<h1>All the Buildings in Manhattan</h1>
+			<h1>Where to go in Time Square</h1>
 			<div class="instructions">Drag & scroll to move around. Double-click to recenter the map.</div>
 			<div class="links">
 				<a href="https://github.com/rolyatmax/nyc-buildings" class="github-link">
@@ -184,133 +178,106 @@
 				</a>
 			</div>
 		</div>
-		<!-- <div class="controls-container card"> -->
-			<!-- <div class="btn-group">
+
+		<div style="padding-top: 20px" class="controls-container card">
+			 <!-- <div class="btn-group">
 				<button onclick="changeContent()">Restaurants</button>
 				<button onclick="changeContent()">Hotels</button>
 				<button onclick="changeContent()">Entertainment</button>
-			</div> -->
-			<!-- <input type="checkbox">Restaurants
-			<br>
-			<label>Cheap
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Medium
-			<input type="checkbox">
-			<label>Expensive
-			<input type="checkbox">
-			</label>
+			</div>  -->
+		
+			<!--restaurant-->
+			<div style="margin-bottom: 20px">
+				<div style="width: 100%; float: left; padding-left: 12px">
+					<input id="restID" type="checkbox" onclick="updatePlot()">Restaurants
+				</div>
+				<div style="padding-left: 12px">
+					<div style="width:40%; float:left">
+						<p>Price</p>
+						<label><input type="checkbox">Cheap</label><br>
+						<label><input type="checkbox">Medium</label><br>
+						<label><input type="checkbox">Expensive</label>
+					</div>
 
-			<br>
-			<label>1
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>2
-			<input type="checkbox">
-			</label>
-			<label>3
-			<input type="checkbox">
-			</label>
-			<label>4
-			<input type="checkbox">
-			</label>
-			<label>5
-			<input type="checkbox">
-			</label>
+					<div style="width:27%; float:left">
+						<p>Ratings</p>
+						<label><input type="checkbox">1</label><br>
+						<label><input type="checkbox">2</label><br>
+						<label><input type="checkbox">3</label><br>
+						<label><input type="checkbox">4</label><br>
+						<label><input type="checkbox">5</label>
+					</div>
 
-			<br>
-			<label>Chinese
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Korean
-			<input type="checkbox">
-			<label>American
-			<input type="checkbox">
-			</label> -->
+					<div style="width:33%; float:left">
+						<p>Tastes</p>
+						<label><input type="checkbox">Chinese</label><br>
+						<label><input type="checkbox">Korean</label><br>
+						<label><input type="checkbox">American</label>
+					</div>
+				</div>
+			</div>
 
+			<!--hotel-->
+			<div style="margin-bottom: 20px">
+				<div style="width: 100%; float: left; padding-left: 12px">
+					<input id="hotelID" type="checkbox" onclick="updatePlot()">Hotels
+				</div>
+				<div style="padding-left: 12px">
+					<div style="width:40%; float:left">
+						<p>Price</p>
+						<label><input type="checkbox">Cheap</label><br>
+						<label><input type="checkbox">Medium</label><br>
+						<label><input type="checkbox">Expensive</label>
+					</div>
 
-			<!-- <hr>
-			<input type="checkbox">Hotels
-			<br>
-			<br>
-			<label>Cheap
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Medium
-			<input type="checkbox">
-			<label>Expensive
-			<input type="checkbox">
-			</label>
+					<div style="width:27%; float:left">
+						<p>Ratings</p>
+						<label><input type="checkbox">1</label><br>
+						<label><input type="checkbox">2</label><br>
+						<label><input type="checkbox">3</label><br>
+						<label><input type="checkbox">4</label><br>
+						<label><input type="checkbox">5</label>
+					</div>
 
-			<br>
-			<label>1
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>2
-			<input type="checkbox">
-			</label>
-			<label>3
-			<input type="checkbox">
-			</label>
-			<label>4
-			<input type="checkbox">
-			</label>
-			<label>5
-			<input type="checkbox">
-			</label>
+					<div style="width:33%; float:left">
+						<p>Type</p>
+						<label><input type="checkbox">Holiday</label><br>
+						<label><input type="checkbox">Business</label>
+					</div>
+				</div>
+			</div>
 
-			<br>
-			<label>Chinese
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Korean
-			<input type="checkbox">
-			<label>American
-			<input type="checkbox">
-			</label>
+			<!--entertainment-->
+			<div style="margin-bottom: 20px">
+				<div style="width: 100%; float: left; padding-left: 12px">
+					<input id="enterID" type="checkbox" onclick="updatePlot()">Entertainment
+				</div>
+				<div style="padding-left: 12px">
+					<div style="width:40%; float:left">
+						<p>Price</p>
+						<label><input type="checkbox">Cheap</label><br>
+						<label><input type="checkbox">Medium</label><br>
+						<label><input type="checkbox">Expensive</label>
+					</div>
 
-			<hr>
-			<input type="checkbox">Entertainment
-			<br>
-			<br>
-			<label>Cheap
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Medium
-			<input type="checkbox">
-			<label>Expensive
-			<input type="checkbox">
-			</label>
+					<div style="width:27%; float:left">
+						<p>Ratings</p>
+						<label><input type="checkbox">1</label><br>
+						<label><input type="checkbox">2</label><br>
+						<label><input type="checkbox">3</label><br>
+						<label><input type="checkbox">4</label><br>
+						<label><input type="checkbox">5</label>
+					</div>
 
-			<br>
-			<label>1
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>2
-			<input type="checkbox">
-			</label>
-			<label>3
-			<input type="checkbox">
-			</label>
-			<label>4
-			<input type="checkbox">
-			</label>
-			<label>5
-			<input type="checkbox">
-			</label>
-
-			<br>
-			<label>Chinese
-			<input type="checkbox" checked="checked">
-			</label>
-			<label>Korean
-			<input type="checkbox">
-			<label>American
-			<input type="checkbox">
-			</label> -->
-
-				  
-		<!-- </div> -->
+					<div style="width:33%; float:left">
+						<p>Category</p>
+						<label><input type="checkbox">Movie</label><br>
+						<label><input type="checkbox">Shopping</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 
 
 		<script src="three.js-master/build/three.js"></script>
@@ -350,36 +317,36 @@
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
-			var params = {
-				restaurant: {
-					include: true,
-					price: 100,
-					category: {
-						chinese: true,
-						korean: true,
-						american: true,
-						indian: true,
-						italian: true
-					}
-				},
-				hotel: {
-					include: true,
-					price: 100,
-					category: {
-						holiday: true,
-						business: true
-					}
-				},
-				entertainment: {
-					include: true,
-					price: 100,
-					category: {
-						movie: true,
-						game: true,
-						shopping: true
-					}
-				}
-			};
+			// var params = {
+			// 	restaurant: {
+			// 		include: true,
+			// 		price: 100,
+			// 		category: {
+			// 			chinese: true,
+			// 			korean: true,
+			// 			american: true,
+			// 			indian: true,
+			// 			italian: true
+			// 		}
+			// 	},
+			// 	hotel: {
+			// 		include: true,
+			// 		price: 100,
+			// 		category: {
+			// 			holiday: true,
+			// 			business: true
+			// 		}
+			// 	},
+			// 	entertainment: {
+			// 		include: true,
+			// 		price: 100,
+			// 		category: {
+			// 			movie: true,
+			// 			game: true,
+			// 			shopping: true
+			// 		}
+			// 	}
+			// };
 
 
 
@@ -414,16 +381,6 @@
 				init();
 				plot();
 				animate();
-
-				// function onMouseMove( event ) { 
-				// // calculate mouse position in normalized device coordinates 
-				// // (-1 to +1) for both components 
-				// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1; 
-				// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1; 
-				// } 
-
-				// window.addEventListener( 'mousemove', onMouseMove, false );
-				// window.requestAnimationFrame(render);
 			});
 
 			function init() {
@@ -441,7 +398,7 @@
 //                 window.requestAnimationFrame(render);
 
 				addLightShadow();
-				createGUI();
+				// createGUI();
 
 				var planeGeometry = new THREE.PlaneBufferGeometry( 15000, 7000 );
 				planeGeometry.rotateX( - Math.PI / 2 );
@@ -548,8 +505,8 @@
 
 				var entertainment = gui.addFolder('Entertainment');
 				entertainment.add(params.entertainment, 'include').onFinishChange(updatePlot);
-				// entertainment.add(params.entertainment, 'rating', 1, 5).onFinishChange(updatePlot);
-				entertainment.add(params.entertainment, 'price', 0, 100).onFinishChange(updatePlot);
+				entertainment.add(params.entertainment, 'rating', 1, 5).onFinishChange(updatePlot);
+				entertainment.add(params.entertainment, 'price', 1, 3).onFinishChange(updatePlot);
 				var entertainmentCategory = entertainment.addFolder('Entertainment category');
 				entertainmentCategory.add(params.entertainment.category, 'movie').onFinishChange(updatePlot);
 				entertainmentCategory.add(params.entertainment.category, 'game').onFinishChange(updatePlot);
@@ -568,15 +525,15 @@
 				object.castShadow = true;
 				object.receiveShadow = true;
 				var oldcolor = object.material.color;
-				console.log(oldcolor)
+				// console.log(oldcolor)
 				object.on('mouseover', function(ev) {
 					object.material.color.setHex( 0xff0000 );
-					console.log('on' + oldcolor)
+					// console.log('on' + oldcolor)
 				});
 				object.on('mouseout', function(ev) {
-					console.log(oldcolor)
+					// console.log(oldcolor)
 					object.material.color.setHex( oldcolor );
-					console.log("off")
+					// console.log("off")
 
 				});
 				
@@ -608,16 +565,11 @@
 
 			function updatePlot() {
 				removeAllPoints();
-				if (params.hotel.include) {
-					for (var i = 0; i < hotelData.length; i++) {
-						var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]));
-						objectCount++;
-						positions.push(object.position);
-					}
-				}
+				var restaurant = document.getElementById('restID').checked;
+				var hotel = document.getElementById('hotelID').checked;
+				var entertainment = document.getElementById('enterID').checked;
 
-				
-				if (params.restaurant.include) {
+				if (restaurant == true) {
 					for (var i = 0; i < restaurantData.length; i++) {
 						var object = addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]));
 						objectCount++;
@@ -625,15 +577,21 @@
 					}
 				}
 
-
-				if (params.entertainment.include) {
+				if (hotel== true) {
+					for (var i = 0; i < hotelData.length; i++) {
+						var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]));
+						objectCount++;
+						positions.push(object.position);
+					}
+				}
+				
+				if (entertainment == true) {
 					for (var i = 0; i < entertainmentData.length; i++) {
 						var object = addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]));			
 						objectCount++;
 						positions.push(object.position);
-					}	
+					}
 				}
-
 						
 			}
 
