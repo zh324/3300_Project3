@@ -16,7 +16,7 @@ function updateRestaurant() {
         } else {
             console.log("restaurant data length: " + rest_filtered_data.length)
             for (var i = 0; i < rest_filtered_data.length; i++) {
-                var object = addSplineObject("restaurant", new THREE.Vector3(rest_filtered_data[i].coordinate[0], -150, rest_filtered_data[i].coordinate[1]), rest_filtered_data[i]["Company Name"], rest_filtered_data[i]["Price"], rest_filtered_data[i]["Rating"], rest_filtered_data[i]["Region"], rest_filtered_data[i]["Address"], "red");
+                var object = addSplineObject("restaurant", new THREE.Vector3(rest_filtered_data[i].coordinate[0], -150, rest_filtered_data[i].coordinate[1]), rest_filtered_data[i]["Company Name"], rest_filtered_data[i]["Price"], rest_filtered_data[i]["Rating"], rest_filtered_data[i]["Region"], rest_filtered_data[i]["Address"], rest_filtered_data[i]["Phone"], rest_filtered_data[i]["Website"], "red");
                 objectCount++;
                 positions.push(object.position);
             }
@@ -45,7 +45,24 @@ function filterPriceRest(data) {
 }
 
 function filterRatingRest(data) {
-    return true;
+    var restRating1 = document.getElementById('restRating1').checked;
+    var restRating2 = document.getElementById('restRating2').checked;
+    var restRating3 = document.getElementById('restRating3').checked;
+    var restRating4 = document.getElementById('restRating4').checked;
+    var restRating5 = document.getElementById('restRating5').checked;
+    if (!restRating1 && !restRating2 && !restRating3 && !restRating4 && !restRating5) {
+        return true;
+    }
+
+    if (restRating1 && (data.Rating == 0 || data.Rating == 1)
+        || restRating2 && (data.Rating == 1.5 || data.Rating == 2)
+        || restRating3 && (data.Rating == 2.5 || data.Rating == 3)
+        || restRating4 && (data.Rating == 3.5 || data.Rating == 4)
+        || restRating5 && (data.Rating == 4.5 || data.Rating == 5)) {
+            return true;
+    } else {
+        return false;
+    }
 }
 
 function filterRegionRest(data) {

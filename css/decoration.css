@@ -1,14 +1,20 @@
 html, body {
     color: #333;
     font-family: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    
   }
   a {
     text-decoration: none;
   }
 
   .infoText {
-    font-size: 18px;
-    font-weight: 900;
+    /* font-size: 18px;
+    font-weight: 900; */
+    /* Rating:: */
+    font-family: BodoniSvtyTwoITCTT-Bold;
+    font-size: 24px;
+    color: #4A4A4A;
+    text-align: left;
   }
 
   .card {

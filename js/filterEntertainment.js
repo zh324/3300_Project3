@@ -16,7 +16,7 @@ function updateEntertainment() {
         } else {
             console.log("entertainment data length: " + enter_filtered_data.length)
             for (var i = 0; i < enter_filtered_data.length; i++) {
-                var object = addSplineObject("entertainment", new THREE.Vector3(enter_filtered_data[i].coordinate[0], -150, enter_filtered_data[i].coordinate[1]), enter_filtered_data[i]["Company Name"], enter_filtered_data[i]["Price"], enter_filtered_data[i]["Rating"], enter_filtered_data[i]["Region"], enter_filtered_data[i]["Address"], "yellow");
+                var object = addSplineObject("entertainment", new THREE.Vector3(enter_filtered_data[i].coordinate[0], -150, enter_filtered_data[i].coordinate[1]), enter_filtered_data[i]["Company Name"], enter_filtered_data[i]["Price"], enter_filtered_data[i]["Rating"], enter_filtered_data[i]["Region"], enter_filtered_data[i]["Address"], enter_filtered_data[i]["Phone"], enter_filtered_data[i]["Website"], "yellow");
                 objectCount++;
                 positions.push(object.position);
             }
@@ -44,7 +44,24 @@ function filterPriceEnter(data) {
 }
 
 function filterRatingEnter(data) {
-    return true;
+    var enterRating1 = document.getElementById('enterRating1').checked;
+    var enterRating2 = document.getElementById('enterRating2').checked;
+    var enterRating3 = document.getElementById('enterRating3').checked;
+    var enterRating4 = document.getElementById('enterRating4').checked;
+    var enterRating5 = document.getElementById('enterRating5').checked;
+    if (!enterRating1 && !enterRating2 && !enterRating3 && !enterRating4 && !enterRating5) {
+        return true;
+    }
+
+    if (enterRating1  && (data.Rating == 0 || data.Rating == 1)
+        || enterRating2  && (data.Rating == 1.5 || data.Rating == 2)
+        || enterRating3  && (data.Rating == 2.5 || data.Rating == 3)
+        || enterRating4  && (data.Rating == 3.5 || data.Rating == 4)
+        || enterRating5  && (data.Rating == 4.5 || data.Rating == 5)) {
+            return true;
+    } else {
+        return false;
+    }
 }
 
 function filterRegionEnter(data) {

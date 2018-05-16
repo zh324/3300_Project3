@@ -1,9 +1,9 @@
 // addHotel();
 
-function addHotel(pz, py) {
+function addHotel() {
     var Hotel = createHotel()
-    Hotel.position.z = pz
-    Hotel.position.y = py
+    // Hotel.position.z = pz
+    // Hotel.position.y = py
 
     scene.add(Hotel)
 }
