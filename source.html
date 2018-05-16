@@ -349,12 +349,12 @@
 				plane.receiveShadow = true;
 				scene.add( plane );
 
-				//grid helper
-				var helper = new THREE.GridHelper( 15000, 100 );
-				helper.position.y = - 199;
-				helper.material.opacity = 0.25;
-				helper.material.transparent = true;
-				scene.add( helper );
+				// //grid helper
+				// var helper = new THREE.GridHelper( 15000, 100 );
+				// // helper.position.y = - 199;
+				// helper.material.opacity = 0.25;
+				// helper.material.transparent = true;
+				// scene.add( helper );
 
 				//render
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -442,17 +442,7 @@
 
 			function addSplineObject(position, name, price, rating, region, address, colorStr) {
 
-
-				// geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
-				// geometry.faces.splice( 3, 1 );
-				// geometry.faceVertexUvs[0].splice( 3, 1 );
-				// geometry.faceVertexUvs[0][2][0].set( 0, 0 );
-				// geometry.faceVertexUvs[0][2][1].set( 0, 0 );
-				// geometry.faceVertexUvs[0][2][2].set( 0, 0 );
-				// geometry.faceVertexUvs[0][2][3].set( 0, 0 );
-
 				
-
 				// var material = new THREE.MeshLambertMaterial( { color: colorStr } );
 				var object = new THREE.Mesh( geometry, materials );
 
