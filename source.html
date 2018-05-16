@@ -34,11 +34,6 @@
 		</div>
 
 		<div style="padding-top: 20px" class="controls-container card">
-			 <!-- <div class="btn-group">
-				<button onclick="changeContent()">Restaurants</button>
-				<button onclick="changeContent()">Hotels</button>
-				<button onclick="changeContent()">Entertainment</button>
-			</div>  -->
 		
 			<!--restaurant-->
 			<div style="margin-bottom: 20px">
@@ -209,8 +204,6 @@
 		</div>
 
 		
-
-
 		<script src="three.js-master/build/three.js"></script>
 		<script src="https://d3js.org/d3.v4.min.js"></script>
 
@@ -261,37 +254,6 @@
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
-			var params = {
-				restaurant: {
-					include: true,
-					price: 100,
-					category: {
-						chinese: true,
-						korean: true,
-						american: true,
-						indian: true,
-						italian: true
-					}
-				},
-				hotel: {
-					include: true,
-					price: 100,
-					category: {
-						holiday: true,
-						business: true
-					}
-				},
-				entertainment: {
-					include: true,
-					price: 100,
-					category: {
-						movie: true,
-						game: true,
-						shopping: true
-					}
-				}
-			};
-
 
 			var spritey;
 			var canvas1, context1, texture1;
@@ -517,11 +479,6 @@
 				}
 				objectCount = 0;
 			}
-
-
-
-
-
 
 		</script>
 	</body>

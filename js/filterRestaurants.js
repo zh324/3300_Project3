@@ -16,7 +16,7 @@ function updateRestaurant() {
         } else {
             console.log("restaurant data length: " + rest_filtered_data.length)
             for (var i = 0; i < rest_filtered_data.length; i++) {
-                var object = addSplineObject(new THREE.Vector3(rest_filtered_data[i].coordinate[0], -150, rest_filtered_data[i].coordinate[1]), rest_filtered_data[i]["Company Name"], "red");
+                var object = addSplineObject(new THREE.Vector3(rest_filtered_data[i].coordinate[0], -150, rest_filtered_data[i].coordinate[1]), rest_filtered_data[i]["Company Name"], rest_filtered_data[i]["Price"], rest_filtered_data[i]["Rating"], rest_filtered_data[i]["Region"], rest_filtered_data[i]["Address"], "red");
                 objectCount++;
                 positions.push(object.position);
             }
