@@ -267,72 +267,81 @@
 			var positionArray = [];
 
 
-			var materialsRestaurant = [
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
-				})
-			];
+			// var materialsRestaurant = [
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+			// 	})
+			// ];
 
-			var materialsHotel = [
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
-				})
-			];
+			// var materialsHotel = [
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+			// 	})
+			// ];
 
-			var materialsEntertainment = [
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				}),
-				new THREE.MeshBasicMaterial({
-					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
-				})
-			];
+			// var materialsEntertainment = [
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	}),
+			// 	new THREE.MeshBasicMaterial({
+			// 		map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+			// 	})
+			// ];
 
 
 			// initialize on text
 			textInit();
+			var hotel = createHotel();
+			    hotel.position.z = 100
+				hotel.position.y = -100
+				scene.add(hotel)
+
+				console.log(hotel);
+
+    
+
 			
 			//load csv file
 			d3.queue()
@@ -423,8 +432,6 @@
 				//tree
 				addTrees();
 
-				addHotel(10, -200);
-				addRestaurant(500, -200)
 
 			}
 
@@ -487,16 +494,29 @@
 			function addSplineObject(objectType, position, name, price, rating, region, address, colorStr) {
 
 				if (objectType == "restaurant") {
-					var object = new THREE.Mesh( geometry, materialsRestaurant );
+					var object = hotel.clone();
+					 
+					object.position.copy (position)
+			
+					scene.add( object );
+					
 				} else if (objectType == "hotel") {
-					var object = new THREE.Mesh( geometry, materialsHotel );
+					var object = hotel.clone();
+					              
+					object.position.copy (position)
+			
+					scene.add( object );
+
 				} else if (objectType == "entertainment") {
-					var object = new THREE.Mesh( geometry, materialsEntertainment );
+					var object = hotel.clone();
+					              
+					object.position.copy (position)
+			
+					scene.add( object );
 				}
 				
 
 				positionArray.push(position);
-				object.position.copy( position );
 
 				object.castShadow = true;
 				object.receiveShadow = true;
@@ -517,13 +537,11 @@
 
 
 					textUpdate(name, price, rating, region, address);
-					console.log(object.position);
 				});
 				object.on('mouseout', function(ev) {
 					// scene.remove( spritex );
 				});
 
-				scene.add( object );
 				buildingObjects.push( object );
 				return object;
 			}
