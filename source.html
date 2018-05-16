@@ -212,6 +212,8 @@
 		<script src="js/filterControls.js"></script>
 		<script src="js/textUpdate.js"></script>
 		<script src="js/toolTip.js"></script>
+		<script src="js/buildCity.js"></script>
+
 
 		<script>
 
@@ -238,7 +240,7 @@
 			var camera, renderer, raycaster;
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var point = new THREE.Vector3();
-			var geometry = new THREE.BoxBufferGeometry( 50, 100, 50 );
+			var geometry = new THREE.BoxGeometry( 50, 100, 50 );
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
@@ -249,6 +251,29 @@
 
 			// textinfo
 			var nameInfo, typeInfo, priceInfo, ratingInfo, addressInfo;
+			var positionArray = [];
+
+
+			var materials = [
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
+				})
+				];
 
 
 			// initialize on text
@@ -283,7 +308,7 @@
 					scaleData(hotelData);
 					scaleData(entertainmentData);
 				}
-
+				
 				init();
 				plot();
 				animate();
@@ -315,11 +340,11 @@
 				scene.add( plane );
 
 				//grid helper
-				// var helper = new THREE.GridHelper( 15000, 100 );
-				// helper.position.y = - 199;
-				// helper.material.opacity = 0.25;
-				// helper.material.transparent = true;
-				// scene.add( helper );
+				var helper = new THREE.GridHelper( 15000, 100 );
+				helper.position.y = - 199;
+				helper.material.opacity = 0.25;
+				helper.material.transparent = true;
+				scene.add( helper );
 
 				//render
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -340,8 +365,16 @@
 			}
 
 
+			var now,delta,then = Date.now();
+			var interval = 1000/30;
+
 			function animate() {
-				requestAnimationFrame( animate );
+				// setTimeout( function() {
+
+					requestAnimationFrame( animate );
+
+				// }, 1000 / 30 );
+
 				render();
 			}
 
@@ -386,30 +419,57 @@
 				spotlight = light;
 			}
 
+			// var hospital = createHospital();
+			
+			
+			// for (var a = 0; a < 300; a++){
+			// 	var pp = a * 10 - 100;
+			// 	addHospital(-20, pp);
+			// }
+			// addHospital(-20, -200);
+			// addHospital(-20, -100);
+
 
 			function addSplineObject(position, name, price, rating, region, address, colorStr) {
-				var material = new THREE.MeshLambertMaterial( { color: colorStr } );
-				var object = new THREE.Mesh( geometry, material );
 
-				// var object = createHospital();
+
+				// geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+				// geometry.faces.splice( 3, 1 );
+				// geometry.faceVertexUvs[0].splice( 3, 1 );
+				// geometry.faceVertexUvs[0][2][0].set( 0, 0 );
+				// geometry.faceVertexUvs[0][2][1].set( 0, 0 );
+				// geometry.faceVertexUvs[0][2][2].set( 0, 0 );
+				// geometry.faceVertexUvs[0][2][3].set( 0, 0 );
+
+				
+
+				// var material = new THREE.MeshLambertMaterial( { color: colorStr } );
+				var object = new THREE.Mesh( geometry, materials );
+
+				positionArray.push(position);
+				// console.log(positionArray)
+
+				// var object = hospital;
 				// object.position.y = -200;
+
 				object.position.copy( position );
 
 				object.castShadow = true;
 				object.receiveShadow = true;
 
 				object.on('mouseover', function(ev) {
-					mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-					mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-					var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-					vector.unproject( camera );
-					var dir = vector.sub( camera.position ).normalize();
-					var distance = - camera.position.z / dir.z;
-					var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-					spritex = makeTextSprite( name, { fontsize: 24, borderColor: {r:0, g:0, b:255, a:1.0}} );
-					console.log(spritex)
-					spritex.position.copy(pos);
-					scene.add( spritex );
+
+					// mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+					// mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+					// var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+					// vector.unproject( camera );
+					// var dir = vector.sub( camera.position ).normalize();
+					// var distance = - camera.position.z / dir.z;
+					// var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+					// spritex = makeTextSprite( name, { fontsize: 24, borderColor: {r:0, g:0, b:255, a:1.0}} );
+					// console.log(spritex)
+					// spritex.position.copy(pos);
+					// scene.add( spritex );
 
 					textUpdate(name, price, rating, region, address);
 

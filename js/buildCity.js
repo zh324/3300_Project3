@@ -1,9 +1,9 @@
 // addHospital();
 
-function addHospital() {
+function addHospital(pz, py) {
     var hospital = createHospital()
-    hospital.position.z = -20
-    hospital.position.y = -200
+    hospital.position.z = pz
+    hospital.position.y = py
 
     scene.add(hospital)
 }
