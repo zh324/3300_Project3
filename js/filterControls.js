@@ -1,3 +1,56 @@
+function openFilter1() {
+    var checkbox1 = document.getElementById('restID');
+    var restaurantFilter = document.getElementById('restaurantFilter');
+    if (checkbox1.checked) {
+        restaurantFilter.style.display = "block";
+    } else {
+        restaurantFilter.style.display = "none";
+    }
+}
+
+function openFilter2() {
+    var checkbox2 = document.getElementById('hotelID');
+    var hotelFilter = document.getElementById('hotelFilter');
+    if (checkbox2.checked) {
+        hotelFilter.style.display = "block";
+    } else {
+        hotelFilter.style.display = "none";
+    }
+}
+
+function openFilter3() {
+    var checkbox3 = document.getElementById('enterID');
+    var entertainmentFilter = document.getElementById('entertainmentFilter');
+    if (checkbox3.checked) {
+        entertainmentFilter.style.display = "block";
+    } else {
+        entertainmentFilter.style.display = "none";
+    }
+}
+
+/* 
+ * general filter
+ */
+
+//prices
+var checkList13 = document.getElementById('list13');
+console.log("hello" + checkList13)
+var items13 = document.getElementById('items13');
+checkList13.getElementsByClassName('anchor')[0].onclick = function (evt) {
+    if (items13.classList.contains('visible')){
+        items13.classList.remove('visible');
+        items13.style.display = "none";
+    }
+    else{
+        items13.classList.add('visible');
+        items13.style.display = "block";
+    }
+}
+items13.onblur = function(evt) {
+    items13.classList.remove('visible');
+}
+
+
 /* 
  * restaurants
  */
@@ -18,6 +71,7 @@ checkList1.getElementsByClassName('anchor')[0].onclick = function (evt) {
 items1.onblur = function(evt) {
     items1.classList.remove('visible');
 }
+
 
 //ratings
 var checkList2 = document.getElementById('list2');
