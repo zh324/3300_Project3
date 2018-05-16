@@ -108,12 +108,19 @@ function addTrees() {
     tree.add(treeTrunk)
 
     var treeLeafsGeometry = new THREE.BoxBufferGeometry(30, 30, 30)
-    var treeLeafs = utils.makeMesh('lambert', treeLeafsGeometry, 0x9c9e5d)
+
+    var treeColor = randomTreeColor();
+    var treeLeafs = utils.makeMesh('lambert', treeLeafsGeometry, treeColor)
     treeLeafs.position.y = 30
     tree.add(treeLeafs)
 
     tree.position.set(x, y, z)
 
-    return tree
+    return tree;
+  }
+
+  function randomTreeColor() {
+    var colors = [0x9c9e5d, 0x5fb22c, 0x406d25, 0x57cc12];
+    return colors[Math.floor(Math.random() * colors.length)];
   }
 
