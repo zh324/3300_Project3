@@ -383,13 +383,13 @@
 				addLightShadow();
 				// createGUI();
 
-				var planeGeometry = new THREE.PlaneBufferGeometry( 15000, 7000 );
-				planeGeometry.rotateX( - Math.PI / 2 );
-				var planeMaterial = new THREE.ShadowMaterial( { opacity: 0.2 } );
+				var planeGeometry = new THREE.BoxBufferGeometry( 15000, 20, 12000 );
+				// planeGeometry.rotateX( - Math.PI / 2 );
+				var planeMaterial = new THREE.ShadowMaterial( { opacity: 0.1 } );
 
 				//add plane
-				var plane = new THREE.Mesh( planeGeometry, planeMaterial );
-				// plane.position.y = -200;
+				var plane = utils.makeMesh('lambert', planeGeometry,0xADADAE)
+				plane.position.y = -200;
 				plane.receiveShadow = true;
 				scene.add( plane );
 
@@ -422,6 +422,8 @@
 
 				//tree
 				addTrees();
+
+				addHospital(100, 100);
 
 			}
 
@@ -524,6 +526,7 @@
 					// console.log(spritex)
 					// spritex.position.copy(pos);
 					// scene.add( spritex );
+
 
 					textUpdate(name, price, rating, region, address);
 
