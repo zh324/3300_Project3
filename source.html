@@ -5,162 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
-		<style>
-			html, body {
-      color: #333;
-      font-family: 'Raleway', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
-    }
-    a {
-      text-decoration: none;
-    }
-    .card {
-      padding: 15px 0;
-      position: absolute;
-      left: 30px;
-      z-index: 1;
-      width: 310px;
-      border-radius: 3px;
-      background: #fff;
-      border: 1px solid #bbb;
-    }
-    .title {
-      top: 30px;
-      width: 310px;
-      opacity: 1;
-      border: 1px solid #bbb;
-      font-size: 17px;
-      background: #fff;
-      z-index: 5;
-      transition: width 500ms cubic-bezier(0.215, 0.610, 0.355, 1),
-                  font-size 500ms cubic-bezier(0.215, 0.610, 0.355, 1),
-                  border 500ms linear 400ms,
-                  background 500ms linear 300ms;
-    }
-    .title h1 {
-      opacity: 1;
-      transition: opacity 600ms linear;
-    }
-    .title h1.hidden {
-      opacity: 0;
-    }
-    .title h1 {
-      font-weight: 200;
-      margin: 0;
-      padding: 0 35px;
-      letter-spacing: -1px;
-      line-height: 100%;
-    }
-    .instructions {
-      margin: 17px 0;
-      padding: 0 35px;
-      font-size: 15px;
-      line-height: 1.2rem;
-      color: #999;
-      opacity: 1;
-      transition: opacity 500ms linear 400ms;
-    }
-    .links {
-      padding: 0 35px;
-      margin: 15px 0 0;
-      opacity: 1;
-      transition: opacity 500ms linear 700ms;
-    }
-    .links a {
-      padding: 10px 10px 10px 0;
-    }
-    .links svg {
-      fill: #777;
-      transition: fill 200ms linear;
-    }
-    .links a:hover svg {
-      fill : #333;
-    }
-    .source {
-      font-size: 10px;
-      margin-top: 12px;
-      color: #bbb;
-      text-transform: uppercase;
-      opacity: 1;
-      position: absolute;
-      bottom: 25px;
-      left: 30px;
-      z-index: 10;
-      transition: opacity 500ms 2500ms; 
-    }
-    .source span {
-      margin-right: 10px;
-    }
-    .source a {
-      margin: 0 5px;
-      color: #777;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0);
-      transition: color 200ms linear,
-                  padding-bottom 400ms cubic-bezier(0.215, 0.610, 0.355, 1),
-                  border-bottom 400ms cubic-bezier(0.215, 0.610, 0.355, 1);
-    }
-    .source a:hover {
-      color: #333;
-      padding-bottom: 2px;
-      border-bottom: 1px solid rgba(51, 51, 51, 1);
-    }
-
-    .controls-container {
-      padding-top: 0;
-      top: 265px;
-      opacity: 1;
-      overflow: hidden;
-      transform: translateY(0);
-      transition: opacity 400ms linear 1600ms,
-                  transform 800ms cubic-bezier(0.215, 0.610, 0.355, 1) 1600ms;
-    }
-
-    .controls-container button {
-      flex-grow: 1;
-      width: 33.333333333%;
-      background: white;
-      outline: none;
-      border: 0;
-      margin: 0;
-      height: 100%;
-      font-size: 10px;
-      color: #bbb;
-      cursor: pointer;
-      text-transform: uppercase;
-      line-height: 115%;
-      transition: color 200ms linear;
-    }
-
-	.btn-group button {
-		background-color: rgb(140, 146, 235); /* Green background */
-		border: 1px solid #ffffff; /* Green border */
-		color: white; /* White text */
-		padding: 10px ; /* Some padding */
-		cursor: pointer; /* Pointer/hand icon */
-		float: left; /* Float the buttons side by side */
-	}
-
-	.btn-group button:hover {
-		background-color: #3b4df1;
-	}
-
-	.btn-group button:active {
-		background-color: #3b4df1;
-	}
-
-.container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-	</style>
+		<link href="css/decoration.css" rel="stylesheet">
 	</head>
 	<body>
 		<div id="container" width="2000" height="2000"></div>
@@ -177,11 +22,6 @@
 		</div>
 
 		<div style="padding-top: 20px" class="controls-container card">
-			 <!-- <div class="btn-group">
-				<button onclick="changeContent()">Restaurants</button>
-				<button onclick="changeContent()">Hotels</button>
-				<button onclick="changeContent()">Entertainment</button>
-			</div>  -->
 		
 			<!--restaurant-->
 			<div style="margin-bottom: 20px">
@@ -189,66 +29,73 @@
 					<input id="restID" type="checkbox" onclick="updatePlot()">Restaurants
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:20%; float:left">
-						<p>Price</p>
-						<label><input id="restPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>
-						<label><input id="restPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
-						<label><input id="restPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
-						<label><input id="restPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
+					<div style="width:50%; float:left" id="list1" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select prices</span>
+						<ul class="items" id="items1">
+							<li><input id="restPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
+							<li><input id="restPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
+							<li><input id="restPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
+							<li><input id="restPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$ </li>
+						</ul>
+					</div>
+			
+					<div style="width:50%; float:left" id="list2" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select ratings</span>
+						<ul class="items" id="items2">
+							<li><input id="restRating1" type="checkbox" onclick="updatePlot()">1</li>
+							<li><input id="restRating2" type="checkbox" onclick="updatePlot()">2</li>
+							<li><input id="restRating3" type="checkbox" onclick="updatePlot()">3</li>
+							<li><input id="restRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="restRating4" type="checkbox" onclick="updatePlot()">4</li>
+						</ul>
 					</div>
 
-					<div style="width:20%; float:left">
-						<p>Ratings</p>
-						<label><input type="checkbox">1</label><br>
-						<label><input type="checkbox">2</label><br>
-						<label><input type="checkbox">3</label><br>
-						<label><input type="checkbox">4</label><br>
-						<label><input type="checkbox">5</label>
+					<div style="width:50%; float:left" id="list3" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select regions</span>
+						<ul class="items" id="items3">
+							<li><input id="restRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
+							<li><input id="restRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
+							<li><input id="restRegionLincoln" type="checkbox" onclick="updatePlot()">Lincoln Square</li>
+							<li><input id="restRegionSoho" type="checkbox" onclick="updatePlot()">Soho-TriBeCa-Civic Center-Little Italy</li>
+						</ul>
 					</div>
 
-					<div style="width:30%; float: left">
-						<p>Regions</p>
-						<label><input id="restRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
-						<label><input id="restRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label><br>
-						<label><input id="restRegionLincoln" type="checkbox" onclick="updatePlot()">Lincoln Square</label><br>
-						<label><input id="restRegionSoho" type="checkbox" onclick="updatePlot()">Soho-TriBeCa-Civic Center-Little Italy</label>					
-					</div>
-
-					<div style="width:30%; float:left">
-						<p>Tastes</p>
-						<label><input id="restTasteMexican" type="checkbox" onclick="updatePlot()">Mexican</label><br>
-						<label><input id="restTasteChinese" type="checkbox" onclick="updatePlot()">Chinese</label><br>
-						<label><input id="restTasteItalian" type="checkbox" onclick="updatePlot()">Italian</label><br>
-						<label><input id="restTasteFrench" type="checkbox" onclick="updatePlot()">French</label><br>
-						<label><input id="restTasteAmerican" type="checkbox" onclick="updatePlot()">American</label><br>
-						<label><input id="restTasteDiner" type="checkbox" onclick="updatePlot()">Diner</label><br>
-						<label><input id="restTasteFastfood" type="checkbox" onclick="updatePlot()">Fast Food</label><br>
-						<label><input id="restTasteDessert" type="checkbox" onclick="updatePlot()">Dessert</label><br>
-						<label><input id="restTasteThai" type="checkbox" onclick="updatePlot()">Thai</label><br>
-						<label><input id="restTasteSteakhouse" type="checkbox" onclick="updatePlot()">Steakhouse</label><br>
-						<label><input id="restTasteBarbecue" type="checkbox" onclick="updatePlot()">Barbecue</label><br>
-						<label><input id="restTastePanasian" type="checkbox" onclick="updatePlot()">Pan Asian</label><br>
-						<label><input id="restTasteRussian" type="checkbox" onclick="updatePlot()">Russian</label><br>
-						<label><input id="restTastePizza" type="checkbox" onclick="updatePlot()">Pizza</label><br>
-						<label><input id="restTasteTurkish" type="checkbox" onclick="updatePlot()">Turkish</label><br>
-						<label><input id="restTasteIdian" type="checkbox" onclick="updatePlot()">Indian</label><br>
-						<label><input id="restTasteJapanese" type="checkbox" onclick="updatePlot()">Japanese</label><br>
-						<label><input id="restTasteVietnamese" type="checkbox" onclick="updatePlot()">Vietnamese</label><br>
-						<label><input id="restTasteSeafood" type="checkbox" onclick="updatePlot()">Seafood</label><br>
-						<label><input id="restTasteCajun" type="checkbox" onclick="updatePlot()">Cajun</label><br>
-						<label><input id="restTasteChilean" type="checkbox" onclick="updatePlot()">Chilean</label><br>
-						<label><input id="restTasteBeverages" type="checkbox" onclick="updatePlot()">Beverages</label><br>
-						<label><input id="restTasteScottish" type="checkbox" onclick="updatePlot()">Scottish</label><br>
-						<label><input id="restTasteCatering" type="checkbox" onclick="updatePlot()">Catering</label><br>
-						<label><input id="restTasteBelgian" type="checkbox" onclick="updatePlot()">Belgian</label><br>
-						<label><input id="restTasteCuban" type="checkbox" onclick="updatePlot()">Cuban</label><br>
-						<label><input id="restTasteBrazilian" type="checkbox" onclick="updatePlot()">Brazilian</label><br>
-						<label><input id="restTasteOthers" type="checkbox" onclick="updatePlot()">Others</label><br>
-						<label><input id="restTasteArgentinian" type="checkbox" onclick="updatePlot()">Argentinian</label><br>
-						<label><input id="restTasteSpanish" type="checkbox" onclick="updatePlot()">Spanish</label>	
-						<label><input id="restTasteOrganic" type="checkbox" onclick="updatePlot()">Organic</label>
-						<label><input id="restTasteNonbeverages" type="checkbox" onclick="updatePlot()">Non beverages</label>
-						
+					<div style="width:50%; float:left" id="list4" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select tastes</span>
+						<ul class="items" id="items4">
+							<li><input id="restTasteMexican" type="checkbox" onclick="updatePlot()">Mexican</li>
+							<li><input id="restTasteChinese" type="checkbox" onclick="updatePlot()">Chinese</li>
+							<li><input id="restTasteItalian" type="checkbox" onclick="updatePlot()">Italian</li>
+							<li><input id="restTasteFrench" type="checkbox" onclick="updatePlot()">French</li>
+							<li><input id="restTasteAmerican" type="checkbox" onclick="updatePlot()">American</li>
+							<li><input id="restTasteDiner" type="checkbox" onclick="updatePlot()">Diner</li>
+							<li><input id="restTasteFastfood" type="checkbox" onclick="updatePlot()">Fast Food</li>
+							<li><input id="restTasteDessert" type="checkbox" onclick="updatePlot()">Dessert</li>
+							<li><input id="restTasteThai" type="checkbox" onclick="updatePlot()">Thai</li>
+							<li><input id="restTasteSteakhouse" type="checkbox" onclick="updatePlot()">Steakhouse</li>
+							<li><input id="restTasteBarbecue" type="checkbox" onclick="updatePlot()">Barbecue</li>
+							<li><input id="restTastePanasian" type="checkbox" onclick="updatePlot()">Pan Asian</li>
+							<li><input id="restTasteRussian" type="checkbox" onclick="updatePlot()">Russian</li>
+							<li><input id="restTastePizza" type="checkbox" onclick="updatePlot()">Pizza</li>
+							<li><input id="restTasteTurkish" type="checkbox" onclick="updatePlot()">Turkish</li>
+							<li><input id="restTasteIdian" type="checkbox" onclick="updatePlot()">Indian</li>
+							<li><input id="restTasteJapanese" type="checkbox" onclick="updatePlot()">Japanese</li>
+							<li><input id="restTasteVietnamese" type="checkbox" onclick="updatePlot()">Vietnamese</li>
+							<li><input id="restTasteSeafood" type="checkbox" onclick="updatePlot()">Seafood</li>
+							<li><input id="restTasteCajun" type="checkbox" onclick="updatePlot()">Cajun</li>
+							<li><input id="restTasteChilean" type="checkbox" onclick="updatePlot()">Chilean</li>
+							<li><input id="restTasteBeverages" type="checkbox" onclick="updatePlot()">Beverages</li>
+							<li><input id="restTasteScottish" type="checkbox" onclick="updatePlot()">Scottish</li>
+							<li><input id="restTasteCatering" type="checkbox" onclick="updatePlot()">Catering</li>
+							<li><input id="restTasteBelgian" type="checkbox" onclick="updatePlot()">Belgian</li>
+							<li><input id="restTasteCuban" type="checkbox" onclick="updatePlot()">Cuban</li>
+							<li><input id="restTasteBrazilian" type="checkbox" onclick="updatePlot()">Brazilian</li>
+							<li><input id="restTasteOthers" type="checkbox" onclick="updatePlot()">Others</li>
+							<li><input id="restTasteArgentinian" type="checkbox" onclick="updatePlot()">Argentinian</li>
+							<li><input id="restTasteSpanish" type="checkbox" onclick="updatePlot()">Spanish</li>	
+							<li><input id="restTasteOrganic" type="checkbox" onclick="updatePlot()">Organic</li>
+							<li><input id="restTasteNonbeverages" type="checkbox" onclick="updatePlot()">Non beverages</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -259,27 +106,33 @@
 					<input id="hotelID" type="checkbox" onclick="updatePlot()">Hotels
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:33%; float:left">
-						<p>Price</p>
-						<label><input id="hotelPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>						
-						<label><input id="hotelPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
-						<label><input id="hotelPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
-						<label><input id="hotelPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
+					<div style="width:50%; float:left" id="list5" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select prices</span>
+						<ul class="items" id="items5">
+							<li><input id="hotelPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
+							<li><input id="hotelPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
+							<li><input id="hotelPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
+							<li><input id="hotelPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$ </li>
+						</ul>
+					</div>
+			
+					<div style="width:50%; float:left" id="list6" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select ratings</span>
+						<ul class="items" id="items6">
+							<li><input id="hotelRating1" type="checkbox" onclick="updatePlot()">1</li>
+							<li><input id="hotelRating2" type="checkbox" onclick="updatePlot()">2</li>
+							<li><input id="hotelRating3" type="checkbox" onclick="updatePlot()">3</li>
+							<li><input id="hotelRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="hotelRating4" type="checkbox" onclick="updatePlot()">4</li>
+						</ul>
 					</div>
 
-					<div style="width:33%; float:left">
-						<p>Ratings</p>
-						<label><input type="checkbox">1</label><br>
-						<label><input type="checkbox">2</label><br>
-						<label><input type="checkbox">3</label><br>
-						<label><input type="checkbox">4</label><br>
-						<label><input type="checkbox">5</label>
-					</div>
-
-					<div style="width:33%; float:left">
-						<p>Regions</p>
-						<label><input id="hotelRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
-						<label><input id="hotelRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label>
+					<div style="width:50%; float:left" id="list7" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select regions</span>
+						<ul class="items" id="items7">
+							<li><input id="hotelRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
+							<li><input id="hotelRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -290,48 +143,55 @@
 					<input id="enterID" type="checkbox" onclick="updatePlot()">Entertainment
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:20%; float:left">
-						<p>Price</p>
-						<label><input id="enterPriceVeryCheap" type="checkbox" onclick="updatePlot()">$</label><br>						
-						<label><input id="enterPriceCheap" type="checkbox" onclick="updatePlot()">$$</label><br>
-						<label><input id="enterPriceMedium" type="checkbox" onclick="updatePlot()">$$$</label><br>
-						<label><input id="enterPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$</label>
+					<div style="width:50%; float:left" id="list9" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select prices</span>
+						<ul class="items" id="items9">
+							<li><input id="enterPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
+							<li><input id="enterPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
+							<li><input id="enterPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
+							<li><input id="enterPriceExpensive" type="checkbox" onclick="updatePlot()">$$$$ </li>
+						</ul>
+					</div>
+			
+					<div style="width:50%; float:left" id="list10" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select ratings</span>
+						<ul class="items" id="items10">
+							<li><input id="enterRating1" type="checkbox" onclick="updatePlot()">1</li>
+							<li><input id="enterRating2" type="checkbox" onclick="updatePlot()">2</li>
+							<li><input id="enterRating3" type="checkbox" onclick="updatePlot()">3</li>
+							<li><input id="enterRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="enterRating4" type="checkbox" onclick="updatePlot()">4</li>
+						</ul>
 					</div>
 
-					<div style="width:20%; float:left">
-						<p>Ratings</p>
-						<label><input type="checkbox">1</label><br>
-						<label><input type="checkbox">2</label><br>
-						<label><input type="checkbox">3</label><br>
-						<label><input type="checkbox">4</label><br>
-						<label><input type="checkbox">5</label>
+					<div style="width:50%; float:left" id="list11" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select regions</span>
+						<ul class="items" id="items11">
+							<li><input id="enterRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
+							<li><input id="enterRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
+							<li><input id="enterRegionOther" type="checkbox" onclick="updatePlot()">Others</li>
+						</ul>
 					</div>
 
-					<div style="width:30%; float:left">
-						<p>Regions</p>
-						<label><input id="enterRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</label><br>
-						<label><input id="enterRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</label>
-						<label><input id="enterRegionOther" type="checkbox" onclick="updatePlot()">Others</label>
-					</div>
-
-					<div style="width:30%; float:left">
-						<p>Venue Types</p>
-						<label><input id="enterVenueTheater" type="checkbox" onclick="updatePlot()">Theater</label><br>
-						<label><input id="enterVenueComedy" type="checkbox" onclick="updatePlot()">Comedy Club</label><br>
-						<label><input id="enterVenueNightclub" type="checkbox" onclick="updatePlot()">Nightclub</label><br>
-						<label><input id="enterVenueAttraction" type="checkbox" onclick="updatePlot()">Attractions/Amusement</label><br>
-						<label><input id="enterVenueMovie" type="checkbox" onclick="updatePlot()">Movies</label><br>
-						<label><input id="enterVenueMuseum" type="checkbox" onclick="updatePlot()">Museums/Galleries</label><br>
-						<label><input id="enterVenueLivemusic" type="checkbox" onclick="updatePlot()">Live Music</label><br>
-						<label><input id="enterVenueLecturehall" type="checkbox" onclick="updatePlot()">Lecture Hall</label><br>
+					<div style="width:50%; float:left" id="list12" class="dropdown-check-list" tabindex="100">
+						<span class="anchor">Select venue types</span>
+						<ul class="items" id="items12">
+							<li><input id="enterVenueTheater" type="checkbox" onclick="updatePlot()">Theater</li>
+							<li><input id="enterVenueComedy" type="checkbox" onclick="updatePlot()">Comedy Club</li>
+							<li><input id="enterVenueNightclub" type="checkbox" onclick="updatePlot()">Nightclub</li>
+							<li><input id="enterVenueAttraction" type="checkbox" onclick="updatePlot()">Attractions/Amusement</li>
+							<li><input id="enterVenueMovie" type="checkbox" onclick="updatePlot()">Movies</li>
+							<li><input id="enterVenueMuseum" type="checkbox" onclick="updatePlot()">Museums/Galleries</li>
+							<li><input id="enterVenueLivemusic" type="checkbox" onclick="updatePlot()">Live Music</li>
+							<li><input id="enterVenueLecturehall" type="checkbox" onclick="updatePlot()">Lecture Hall</li>
+						</ul>
 					</div>
 
 				</div>
 			</div>
 		</div>
+
 		
-
-
 		<script src="three.js-master/build/three.js"></script>
 		<script src="https://d3js.org/d3.v4.min.js"></script>
 
@@ -349,12 +209,9 @@
 		<script src="js/filterRestaurants.js"></script>
 		<script src="js/filterHotels.js"></script>
 		<script src="js/filterEntertainment.js"></script>
-
+		<script src="js/filterControls.js"></script>
 		<script src="js/textUpdate.js"></script>
 		<script src="js/toolTip.js"></script>
-
-
-
 
 		<script>
 
@@ -385,37 +242,6 @@
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
-			var params = {
-				restaurant: {
-					include: true,
-					price: 100,
-					category: {
-						chinese: true,
-						korean: true,
-						american: true,
-						indian: true,
-						italian: true
-					}
-				},
-				hotel: {
-					include: true,
-					price: 100,
-					category: {
-						holiday: true,
-						business: true
-					}
-				},
-				entertainment: {
-					include: true,
-					price: 100,
-					category: {
-						movie: true,
-						game: true,
-						shopping: true
-					}
-				}
-			};
-
 
 			var spritey;
 			var canvas1, context1, texture1;
@@ -641,11 +467,6 @@
 				}
 				objectCount = 0;
 			}
-
-
-
-
-
 
 		</script>
 	</body>

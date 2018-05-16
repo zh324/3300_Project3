@@ -15,7 +15,7 @@ function updateHotel() {
         } else {
             console.log("hotel data length: " + hotel_filtered_data.length)
             for (var i = 0; i < hotel_filtered_data.length; i++) {
-                var object = addSplineObject(new THREE.Vector3(hotel_filtered_data[i].coordinate[0], -150, hotel_filtered_data[i].coordinate[1]), hotel_filtered_data[i]["Company Name"], "green");
+                var object = addSplineObject(new THREE.Vector3(hotel_filtered_data[i].coordinate[0], -150, hotel_filtered_data[i].coordinate[1]), hotel_filtered_data[i]["Company Name"], hotel_filtered_data[i]["Price"], hotel_filtered_data[i]["Rating"], hotel_filtered_data[i]["Region"], hotel_filtered_data[i]["Address"], "green");
                 objectCount++;
                 positions.push(object.position);
             }
