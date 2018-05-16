@@ -10,23 +10,35 @@
 	<body>
 		<div id="container" width="2000" height="2000"></div>
 		<!-- <div id="distInfo"></div> -->
-
-
+		
 		<!--project information-->
 		<div class="title card" id="buildinginfo">
-			<div  id="buildingName"></div>
-			<div  id="buildingPrice"></div>
-			<div  id="buildingRating"></div>
-			<div  id="buildingRegion"></div>
-			<div  id="buildingAddress"></div>
+			<h1>Welcome to Times Square!</h1>
+				<div class="instructions" id="buildingName"></div>
+				<div id="buildingPrice"></div>
+				<div id="buildingRating"></div>
+				<div id="buildingRegion"></div>
+				<div id="buildingAddress"></div>
 		</div>
 
 		<div style="margin-bottom: 20px" class="controls-container card">
-		
+			<!--general filter-->
+			<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
+				Click to filter places
+			</div>
+			<div style="float:left; padding-left: 12px" id="list13" class="dropdown-check-list" tabindex="100">
+				<span class="anchor drop-down-title-font">Select</span>
+				<ul class="items drop-down-item-font" id="items13">
+					<li><input id="restID" type="checkbox" onclick="openFilter1(); updatePlot()">Restaurants</li>
+					<li><input id="hotelID" type="checkbox" onclick="openFilter2(); updatePlot()">Hotels</li>
+					<li><input id="enterID" type="checkbox" onclick="openFilter3(); updatePlot()">Entertainment</li>
+				</ul>
+			</div>
+
 			<!--restaurant-->
-			<div style="margin-bottom: 40px">
+			<div id="restaurantFilter" style="margin-bottom: 40px; display: none">
 				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
-					<input id="restID" type="checkbox" onclick="updatePlot()">Restaurants
+					Filter by Restaurants
 				</div>
 				<div style="padding-left: 12px;">
 					<div style="float:left" id="list1" class="dropdown-check-list" tabindex="100">
@@ -46,7 +58,7 @@
 							<li><input id="restRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="restRating3" type="checkbox" onclick="updatePlot()">3</li>
 							<li><input id="restRating4" type="checkbox" onclick="updatePlot()">4</li>
-							<li><input id="restRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="restRating5" type="checkbox" onclick="updatePlot()">5</li>
 						</ul>
 					</div>
 
@@ -101,9 +113,9 @@
 			</div>
 
 			<!--hotel-->
-			<div style="margin-bottom: 20px">
+			<div id="hotelFilter" style="margin-bottom: 20px; display: none;">
 				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
-					<input id="hotelID" type="checkbox" onclick="updatePlot()">Hotels
+					Filter by Hotels
 				</div>
 				<div style="padding-left: 12px">
 					<div style="float:left" id="list5" class="dropdown-check-list" tabindex="100">
@@ -123,7 +135,7 @@
 							<li><input id="hotelRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="hotelRating3" type="checkbox" onclick="updatePlot()">3</li>
 							<li><input id="hotelRating4" type="checkbox" onclick="updatePlot()">4</li>
-							<li><input id="hotelRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="hotelRating5" type="checkbox" onclick="updatePlot()">5</li>
 						</ul>
 					</div>
 
@@ -138,9 +150,9 @@
 			</div>
 
 			<!--entertainment-->
-			<div style="margin-bottom: 20px">
+			<div id="entertainmentFilter" style="margin-bottom: 20px; display: none;">
 				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
-					<input id="enterID" type="checkbox" onclick="updatePlot()">Entertainment
+					Filter by Entertainment
 				</div>
 				<div style="padding-left: 12px">
 					<div style="float:left" id="list9" class="dropdown-check-list" tabindex="100">
@@ -160,7 +172,7 @@
 							<li><input id="enterRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="enterRating3" type="checkbox" onclick="updatePlot()">3</li>
 							<li><input id="enterRating4" type="checkbox" onclick="updatePlot()">4</li>
-							<li><input id="enterRating4" type="checkbox" onclick="updatePlot()">4</li>
+							<li><input id="enterRating5" type="checkbox" onclick="updatePlot()">5</li>
 						</ul>
 					</div>
 
@@ -214,7 +226,6 @@
 		<script src="js/toolTip.js"></script>
 
 		<script>
-
 			var hotelData;
 			var restaurantData;
 			var entertainmentData;
@@ -249,7 +260,6 @@
 
 			// textinfo
 			var nameInfo, typeInfo, priceInfo, ratingInfo, addressInfo;
-
 
 			// initialize on text
 			textInit();
