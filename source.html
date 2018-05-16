@@ -379,7 +379,6 @@
 				// add raycaster
 				raycaster = new THREE.Raycaster();
 
-
 				addLightShadow();
 				// createGUI();
 
@@ -388,8 +387,8 @@
 				var planeMaterial = new THREE.ShadowMaterial( { opacity: 0.1 } );
 
 				//add plane
-				var plane = utils.makeMesh('lambert', planeGeometry,0xADADAE)
-				plane.position.y = -200;
+				var plane = utils.makeMesh('lambert', planeGeometry, "#c4c9d1")
+				plane.position.y = -220;
 				plane.receiveShadow = true;
 				scene.add( plane );
 
@@ -418,7 +417,7 @@
 				
 				
 				//road
-				// buildRoad();
+				buildRoad();
 
 				//tree
 				addTrees();
