@@ -4,7 +4,7 @@ function textInit(){
     .style('background', 'white')
     .attr("id", "bar")
     .attr('width', "200")
-    .attr('height', "50");
+    .attr('height', "30");
     
     nameInfo.append("text")
     .attr("id","bName")
@@ -19,7 +19,7 @@ function textInit(){
     .style('background', 'white')
     .attr("id", "bar")
     .attr('width', "200")
-    .attr('height', "50");
+    .attr('height', "30");
     
     priceInfo.append("text")
     .attr("id","bPrice")
@@ -34,7 +34,7 @@ function textInit(){
     .style('background', 'white')
     .attr("id", "bar")
     .attr('width', "200")
-    .attr('height', "50");
+    .attr('height', "30");
     
     ratingInfo.append("text")
     .attr("id","bRating")
@@ -49,7 +49,7 @@ function textInit(){
     .style('background', 'white')
     .attr("id", "bar")
     .attr('width', "200")
-    .attr('height', "50");
+    .attr('height', "30");
     
     regionInfo.append("text")
     .attr("id","bRegion")
@@ -64,7 +64,7 @@ function textInit(){
     .style('background', 'white')
     .attr("id", "bar")
     .attr('width', "200")
-    .attr('height', "50");
+    .attr('height', "30");
     
     addressInfo.append("text")
     .attr("id","bAddress")
