@@ -480,20 +480,9 @@
 				spotlight = light;
 			}
 
-			// var hospital = createHospital();
-			
-			
-			// for (var a = 0; a < 300; a++){
-			// 	var pp = a * 10 - 100;
-			// 	addHospital(-20, pp);
-			// }
-			// addHospital(-20, -200);
-			// addHospital(-20, -100);
-
 
 			function addSplineObject(objectType, position, name, price, rating, region, address, colorStr) {
 
-				console.log(objectType);
 				if (objectType == "restaurant") {
 					var object = new THREE.Mesh( geometry, materialsRestaurant );
 				} else if (objectType == "hotel") {
@@ -504,29 +493,14 @@
 				
 
 				positionArray.push(position);
-				console.log("hello" + objectType)
-				console.log(object);
 				object.position.copy( position );
 
 				object.castShadow = true;
 				object.receiveShadow = true;
 
 				object.on('mouseover', function(ev) {
-
-					// mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-					// mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-					// var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-					// vector.unproject( camera );
-					// var dir = vector.sub( camera.position ).normalize();
-					// var distance = - camera.position.z / dir.z;
-					// var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-					// spritex = makeTextSprite( name, { fontsize: 24, borderColor: {r:0, g:0, b:255, a:1.0}} );
-					// console.log(spritex)
-					// spritex.position.copy(pos);
-					// scene.add( spritex );
-
 					textUpdate(name, price, rating, region, address);
-
+					console.log(object.position);
 				});
 				object.on('mouseout', function(ev) {
 					// scene.remove( spritex );
