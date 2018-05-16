@@ -216,8 +216,6 @@
 		<script src="js/utils.js"></script>
 		<script src="js/textures.js"></script>
 
-
-
 		<script src="js/filterRestaurants.js"></script>
 		<script src="js/filterHotels.js"></script>
 		<script src="js/filterEntertainment.js"></script>
@@ -225,9 +223,12 @@
 		<script src="js/textUpdate.js"></script>
 		<script src="js/toolTip.js"></script>
 		<script src="js/buildCity.js"></script>
+		<script src="js/buildRoads.js"></script>
+		<script src="js/buildTrees.js"></script>
 
 
 		<script>
+			
 			var hotelData;
 			var restaurantData;
 			var entertainmentData;
@@ -265,7 +266,7 @@
 			var positionArray = [];
 
 
-			var materials = [
+			var materialsRestaurant = [
 				new THREE.MeshBasicMaterial({
 					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
 				}),
@@ -284,7 +285,50 @@
 				new THREE.MeshBasicMaterial({
 					map: THREE.ImageUtils.loadTexture('/images/building_texture_02.jpg')
 				})
-				];
+			];
+
+			var materialsHotel = [
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_04.jpg')
+				})
+			];
+
+			var materialsEntertainment = [
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				}),
+				new THREE.MeshBasicMaterial({
+					map: THREE.ImageUtils.loadTexture('/images/building_texture_03.jpg')
+				})
+			];
+
 
 			// initialize on text
 			textInit();
@@ -345,7 +389,7 @@
 
 				//add plane
 				var plane = new THREE.Mesh( planeGeometry, planeMaterial );
-				plane.position.y = -200;
+				// plane.position.y = -200;
 				plane.receiveShadow = true;
 				scene.add( plane );
 
@@ -370,7 +414,14 @@
 				var interaction = new THREE.Interaction(renderer, scene, camera);
 
 				// sprite
-				var spritex;				
+				var spritex;		
+				
+				
+				//road
+				// buildRoad();
+
+				//tree
+				addTrees();
 
 			}
 
@@ -440,18 +491,21 @@
 			// addHospital(-20, -100);
 
 
-			function addSplineObject(position, name, price, rating, region, address, colorStr) {
+			function addSplineObject(objectType, position, name, price, rating, region, address, colorStr) {
 
+				console.log(objectType);
+				if (objectType == "restaurant") {
+					var object = new THREE.Mesh( geometry, materialsRestaurant );
+				} else if (objectType == "hotel") {
+					var object = new THREE.Mesh( geometry, materialsHotel );
+				} else if (objectType == "entertainment") {
+					var object = new THREE.Mesh( geometry, materialsEntertainment );
+				}
 				
-				// var material = new THREE.MeshLambertMaterial( { color: colorStr } );
-				var object = new THREE.Mesh( geometry, materials );
 
 				positionArray.push(position);
-				// console.log(positionArray)
-
-				// var object = hospital;
-				// object.position.y = -200;
-
+				console.log("hello" + objectType)
+				console.log(object);
 				object.position.copy( position );
 
 				object.castShadow = true;
@@ -475,7 +529,7 @@
 
 				});
 				object.on('mouseout', function(ev) {
-					scene.remove( spritex );
+					// scene.remove( spritex );
 				});
 
 				scene.add( object );
@@ -485,17 +539,17 @@
 
 			function plot() {
 				for (var i = 0; i < hotelData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]), hotelData[i]["Company Name"], hotelData[i]["Price"], hotelData[i]["Rating"], hotelData[i]["Region"], hotelData[i]["Address"], "green");
+					var object = addSplineObject("hotel", new THREE.Vector3(hotelData[i].coordinate[0], -150, hotelData[i].coordinate[1]), hotelData[i]["Company Name"], hotelData[i]["Price"], hotelData[i]["Rating"], hotelData[i]["Region"], hotelData[i]["Address"], "green");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < restaurantData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"], restaurantData[i]["Price"], restaurantData[i]["Rating"], restaurantData[i]["Region"], restaurantData[i]["Address"], "red");
+					var object = addSplineObject("restaurant", new THREE.Vector3(restaurantData[i].coordinate[0], -150, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"], restaurantData[i]["Price"], restaurantData[i]["Rating"], restaurantData[i]["Region"], restaurantData[i]["Address"], "red");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < entertainmentData.length; i++) {
-					var object = addSplineObject(new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"],  entertainmentData[i]["Price"], entertainmentData[i]["Rating"], entertainmentData[i]["Region"], entertainmentData[i]["Address"],"yellow");			
+					var object = addSplineObject("entertainment", new THREE.Vector3(entertainmentData[i].coordinate[0], -150, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"],  entertainmentData[i]["Price"], entertainmentData[i]["Rating"], entertainmentData[i]["Region"], entertainmentData[i]["Address"],"yellow");			
 					objectCount++;
 					positions.push(object.position);
 				}					

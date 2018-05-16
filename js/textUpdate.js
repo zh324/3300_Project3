@@ -108,7 +108,4 @@ function textUpdate(name, price, rating, region, address){
         .attr("y", 20)
         .attr("class", "infoText")
         .text("Address:     " + address);
-        
-
-
 }
