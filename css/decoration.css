@@ -123,77 +123,81 @@ html, body {
     transition: color 200ms linear;
   }
 
-  .btn-group button {
-      background-color: rgb(140, 146, 235); /* Green background */
-      border: 1px solid #ffffff; /* Green border */
-      color: white; /* White text */
-      padding: 10px ; /* Some padding */
-      cursor: pointer; /* Pointer/hand icon */
-      float: left; /* Float the buttons side by side */
-  }
-
-  .btn-group button:hover {
-      background-color: #3b4df1;
-  }
-
-  .btn-group button:active {
-      background-color: #3b4df1;
-  }
-
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
 .dropdown-check-list {
-display: inline-block;
+  display: inline-block;
+  width: 102px;
+  padding-right: 45px;
+  padding-top: 5px
 }
+
 .dropdown-check-list .anchor {
-position: relative;
-cursor: pointer;
-display: inline-block;
-padding: 5px 50px 5px 10px;
-border: 1px solid #ccc;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+
+  background: #FFFFFF;
+  border: 1px solid #90A1B5;
+  border-radius: 3px;
+  width: 80px
 }
 .dropdown-check-list .anchor:after {
-position: absolute;
-content: "";
-border-left: 2px solid black;
-border-top: 2px solid black;
-padding: 5px;
-right: 10px;
-top: 20%;
--moz-transform: rotate(-135deg);
--ms-transform: rotate(-135deg);
--o-transform: rotate(-135deg);
--webkit-transform: rotate(-135deg);
-transform: rotate(-135deg);
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
+
 .dropdown-check-list .anchor:active:after {
-right: 8px;
-top: 21%;
+  right: 8px;
+  top: 21%;
 }
+
 .dropdown-check-list ul.items {
-padding: 2px;
-display: none;
-margin: 0;
-border: 1px solid #ccc;
-border-top: none;
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 136px
 }
 .dropdown-check-list ul.items li {
-list-style: none;
+  list-style: none;
 }
 .dropdown-check-list.visible .anchor {
-color: #0094ff;
+  color: #0094ff;
 }
 .dropdown-check-list.visible .items {
-display: block;
+  display: block;
+}
+
+.category-title {
+  font-family: Avenir-Black;
+  font-size: 22px;
+  color: #34495E;
+  letter-spacing: 1.1px;
+  padding-top: 20px
+}
+
+.drop-down-title-font {
+  font-family: Avenir-Roman;
+  font-size: 18px;
+  color: #90A1B5;
+  text-align: left;
+}
+
+.drop-down-item-font {
+  font-family: Avenir-Roman;
+  font-size: 14px;
+  color: #445870;
+  text-align: left;
 }
 

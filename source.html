@@ -21,17 +21,17 @@
 			<div  id="buildingAddress"></div>
 		</div>
 
-		<div style="padding-top: 20px" class="controls-container card">
+		<div style="margin-bottom: 20px" class="controls-container card">
 		
 			<!--restaurant-->
-			<div style="margin-bottom: 20px">
-				<div style="width: 100%; float: left; padding-left: 12px">
+			<div style="margin-bottom: 40px">
+				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
 					<input id="restID" type="checkbox" onclick="updatePlot()">Restaurants
 				</div>
-				<div style="padding-left: 12px">
-					<div style="width:50%; float:left" id="list1" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select prices</span>
-						<ul class="items" id="items1">
+				<div style="padding-left: 12px;">
+					<div style="float:left" id="list1" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Prices</span>
+						<ul class="items drop-down-item-font" id="items1">
 							<li><input id="restPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
 							<li><input id="restPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
 							<li><input id="restPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
@@ -39,9 +39,9 @@
 						</ul>
 					</div>
 			
-					<div style="width:50%; float:left" id="list2" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select ratings</span>
-						<ul class="items" id="items2">
+					<div style="float:left" id="list2" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Ratings</span>
+						<ul class="items drop-down-item-font" id="items2">
 							<li><input id="restRating1" type="checkbox" onclick="updatePlot()">1</li>
 							<li><input id="restRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="restRating3" type="checkbox" onclick="updatePlot()">3</li>
@@ -50,9 +50,9 @@
 						</ul>
 					</div>
 
-					<div style="width:50%; float:left" id="list3" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select regions</span>
-						<ul class="items" id="items3">
+					<div style="float:left" id="list3" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Regions</span>
+						<ul class="items drop-down-item-font" id="items3">
 							<li><input id="restRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
 							<li><input id="restRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
 							<li><input id="restRegionLincoln" type="checkbox" onclick="updatePlot()">Lincoln Square</li>
@@ -60,9 +60,9 @@
 						</ul>
 					</div>
 
-					<div style="width:50%; float:left" id="list4" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select tastes</span>
-						<ul class="items" id="items4">
+					<div style="float:left" id="list4" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Tastes</span>
+						<ul class="items drop-down-item-font" id="items4">
 							<li><input id="restTasteMexican" type="checkbox" onclick="updatePlot()">Mexican</li>
 							<li><input id="restTasteChinese" type="checkbox" onclick="updatePlot()">Chinese</li>
 							<li><input id="restTasteItalian" type="checkbox" onclick="updatePlot()">Italian</li>
@@ -102,13 +102,13 @@
 
 			<!--hotel-->
 			<div style="margin-bottom: 20px">
-				<div style="width: 100%; float: left; padding-left: 12px">
+				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
 					<input id="hotelID" type="checkbox" onclick="updatePlot()">Hotels
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:50%; float:left" id="list5" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select prices</span>
-						<ul class="items" id="items5">
+					<div style="float:left" id="list5" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Prices</span>
+						<ul class="items drop-down-item-font" id="items5">
 							<li><input id="hotelPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
 							<li><input id="hotelPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
 							<li><input id="hotelPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
@@ -116,9 +116,9 @@
 						</ul>
 					</div>
 			
-					<div style="width:50%; float:left" id="list6" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select ratings</span>
-						<ul class="items" id="items6">
+					<div style="float:left" id="list6" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Ratings</span>
+						<ul class="items drop-down-item-font" id="items6">
 							<li><input id="hotelRating1" type="checkbox" onclick="updatePlot()">1</li>
 							<li><input id="hotelRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="hotelRating3" type="checkbox" onclick="updatePlot()">3</li>
@@ -127,9 +127,9 @@
 						</ul>
 					</div>
 
-					<div style="width:50%; float:left" id="list7" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select regions</span>
-						<ul class="items" id="items7">
+					<div style="float:left" id="list7" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Regions</span>
+						<ul class="items drop-down-item-font" id="items7">
 							<li><input id="hotelRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
 							<li><input id="hotelRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
 						</ul>
@@ -139,13 +139,13 @@
 
 			<!--entertainment-->
 			<div style="margin-bottom: 20px">
-				<div style="width: 100%; float: left; padding-left: 12px">
+				<div class="category-title" style="width: 100%; float: left; padding-left: 12px">
 					<input id="enterID" type="checkbox" onclick="updatePlot()">Entertainment
 				</div>
 				<div style="padding-left: 12px">
-					<div style="width:50%; float:left" id="list9" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select prices</span>
-						<ul class="items" id="items9">
+					<div style="float:left" id="list9" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Prices</span>
+						<ul class="items drop-down-item-font" id="items9">
 							<li><input id="enterPriceVeryCheap" type="checkbox" onclick="updatePlot()">$ </li>
 							<li><input id="enterPriceCheap" type="checkbox" onclick="updatePlot()">$$</li>
 							<li><input id="enterPriceMedium" type="checkbox" onclick="updatePlot()">$$$ </li>
@@ -153,9 +153,9 @@
 						</ul>
 					</div>
 			
-					<div style="width:50%; float:left" id="list10" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select ratings</span>
-						<ul class="items" id="items10">
+					<div style="float:left" id="list10" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Ratings</span>
+						<ul class="items drop-down-item-font" id="items10">
 							<li><input id="enterRating1" type="checkbox" onclick="updatePlot()">1</li>
 							<li><input id="enterRating2" type="checkbox" onclick="updatePlot()">2</li>
 							<li><input id="enterRating3" type="checkbox" onclick="updatePlot()">3</li>
@@ -164,24 +164,24 @@
 						</ul>
 					</div>
 
-					<div style="width:50%; float:left" id="list11" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select regions</span>
-						<ul class="items" id="items11">
+					<div style="float:left" id="list11" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Regions</span>
+						<ul class="items drop-down-item-font" id="items11">
 							<li><input id="enterRegionMidtown" type="checkbox" onclick="updatePlot()">Midtown-Midtown South</li>
 							<li><input id="enterRegionClinton" type="checkbox" onclick="updatePlot()">Clinton</li>
 							<li><input id="enterRegionOther" type="checkbox" onclick="updatePlot()">Others</li>
 						</ul>
 					</div>
 
-					<div style="width:50%; float:left" id="list12" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Select venue types</span>
-						<ul class="items" id="items12">
+					<div style="float:left" id="list12" class="dropdown-check-list" tabindex="100">
+						<span class="anchor drop-down-title-font">Types</span>
+						<ul class="items drop-down-item-font" id="items12">
 							<li><input id="enterVenueTheater" type="checkbox" onclick="updatePlot()">Theater</li>
 							<li><input id="enterVenueComedy" type="checkbox" onclick="updatePlot()">Comedy Club</li>
 							<li><input id="enterVenueNightclub" type="checkbox" onclick="updatePlot()">Nightclub</li>
-							<li><input id="enterVenueAttraction" type="checkbox" onclick="updatePlot()">Attractions/Amusement</li>
+							<li><input id="enterVenueAttraction" type="checkbox" onclick="updatePlot()">Attractions / Amusement</li>
 							<li><input id="enterVenueMovie" type="checkbox" onclick="updatePlot()">Movies</li>
-							<li><input id="enterVenueMuseum" type="checkbox" onclick="updatePlot()">Museums/Galleries</li>
+							<li><input id="enterVenueMuseum" type="checkbox" onclick="updatePlot()">Museums / Galleries</li>
 							<li><input id="enterVenueLivemusic" type="checkbox" onclick="updatePlot()">Live Music</li>
 							<li><input id="enterVenueLecturehall" type="checkbox" onclick="updatePlot()">Lecture Hall</li>
 						</ul>
@@ -422,7 +422,6 @@
 				buildingObjects.push( object );
 				return object;
 			}
-
 
 			function plot() {
 				for (var i = 0; i < hotelData.length; i++) {
