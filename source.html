@@ -482,20 +482,9 @@
 				spotlight = light;
 			}
 
-			// var hospital = createHospital();
-			
-			
-			// for (var a = 0; a < 300; a++){
-			// 	var pp = a * 10 - 100;
-			// 	addHospital(-20, pp);
-			// }
-			// addHospital(-20, -200);
-			// addHospital(-20, -100);
-
 
 			function addSplineObject(objectType, position, name, price, rating, region, address, colorStr) {
 
-				console.log(objectType);
 				if (objectType == "restaurant") {
 					var object = new THREE.Mesh( geometry, materialsRestaurant );
 				} else if (objectType == "hotel") {
@@ -506,8 +495,6 @@
 				
 
 				positionArray.push(position);
-				console.log("hello" + objectType)
-				console.log(object);
 				object.position.copy( position );
 
 				object.castShadow = true;
@@ -529,7 +516,7 @@
 
 
 					textUpdate(name, price, rating, region, address);
-
+					console.log(object.position);
 				});
 				object.on('mouseout', function(ev) {
 					// scene.remove( spritex );
