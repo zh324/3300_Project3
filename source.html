@@ -222,7 +222,8 @@
 		<script src="js/filterControls.js"></script>
 		<script src="js/textUpdate.js"></script>
 		<script src="js/toolTip.js"></script>
-		<script src="js/buildCity.js"></script>
+		<script src="js/buildHotel.js"></script>
+		<script src="js/buildRestaurant.js"></script>
 		<script src="js/buildRoads.js"></script>
 		<script src="js/buildTrees.js"></script>
 
@@ -252,7 +253,7 @@
 			var camera, renderer, raycaster;
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var point = new THREE.Vector3();
-			var geometry = new THREE.BoxGeometry( 50, 100, 50 );
+			var geometry = new THREE.BoxGeometry( 80, 100, 80 );
 			var transformControl;
 			var ARC_SEGMENTS = 200;
 			var splines = {};
@@ -389,7 +390,7 @@
 
 				//add plane
 				var plane = utils.makeMesh('lambert', planeGeometry,0xADADAE)
-				plane.position.y = -200;
+				plane.position.y = -250;
 				plane.receiveShadow = true;
 				scene.add( plane );
 
@@ -423,7 +424,8 @@
 				//tree
 				addTrees();
 
-				addHospital(100, 100);
+				addHotel(10, -200);
+				addRestaurant(500, -200)
 
 			}
 

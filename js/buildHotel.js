@@ -1,43 +1,105 @@
-// addHospital();
+// addHotel();
 
-function addHospital(pz, py) {
-    var hospital = createHospital()
-    hospital.position.z = pz
-    hospital.position.y = py
+function addHotel(pz, py) {
+    var Hotel = createHotel()
+    Hotel.position.z = pz
+    Hotel.position.y = py
 
-    scene.add(hospital)
+    scene.add(Hotel)
 }
 
-function createHospital() {
-    var hospital = new THREE.Object3D()
+function createHotel() {
+    var Hotel = new THREE.Object3D()
 
-    var baseGeometry = new THREE.BoxBufferGeometry(180, 3, 140)
+    // 白色基地
+    var baseGeometry = new THREE.BoxBufferGeometry(80, 3, 80)
     var base = utils.makeMesh('lambert', baseGeometry, 0xffffff)
     base.position.y = 1
-    hospital.add(base)
+    Hotel.add(base)
 
-    var frontMainCoords = [
-    [-80, -30],
-    [-80, 20],
-    [50, 20],
-    [50, 0],
-    [20, -30],
-    [-80, -30]
-    ]
-    var frontMainShape = utils.makeShape(frontMainCoords)
+    // 带玻璃立方体
+    var frontMainCoords1 = [
+        [-30, -25],
+        [-30, 25],
+        [-15, 35],
+        [-15, -25]
+        ]
+    var frontMainCoords2 = [
+        [-15, -35],
+        [-15, 35],
+        [15, 35],
+        [15, -35]
+        ]
+
+    var frontMainCoords3 = [
+        [15, -25],
+        [15, 35],
+        [30, 25],
+        [30, -25]
+        ]
+    var frontMainCoords4 = [
+        [-10, -15],
+        [-10, 15],
+        [10, 15],
+        [10, -15]
+        ]
+    var frontMainShape = utils.makeShape(frontMainCoords1)
     var frontMainGeometry = utils.makeExtrudeGeometry(frontMainShape, 100)
     var frontMainMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
     frontMainMaterial.map.repeat.set(0.1, 0.08)
     var frontMain = new THREE.Mesh(frontMainGeometry, frontMainMaterial)
     frontMain.castShadow = true
     frontMain.receiveShadow = true
-    hospital.add(frontMain)
+    Hotel.add(frontMain)
+    var frontTopShape = frontMainShape
+    var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
+    var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
+    frontTop.position.y = 100
+    Hotel.add(frontTop)
 
-    // var frontTopShape = frontMainShape
-    // var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
-    // var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
-    // frontTop.position.y = 100
-    // hospital.add(frontTop)
+    var frontMainShape = utils.makeShape(frontMainCoords2)
+    var frontMainGeometry = utils.makeExtrudeGeometry(frontMainShape, 180)
+    var frontMainMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
+    frontMainMaterial.map.repeat.set(0.1, 0.08)
+    var frontMain = new THREE.Mesh(frontMainGeometry, frontMainMaterial)
+    frontMain.castShadow = true
+    frontMain.receiveShadow = true
+    Hotel.add(frontMain)
+    var frontTopShape = frontMainShape
+    var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
+    var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
+    frontTop.position.y = 100
+    Hotel.add(frontTop)
+
+    var frontMainShape = utils.makeShape(frontMainCoords3)
+    var frontMainGeometry = utils.makeExtrudeGeometry(frontMainShape, 100)
+    var frontMainMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
+    frontMainMaterial.map.repeat.set(0.1, 0.08)
+    var frontMain = new THREE.Mesh(frontMainGeometry, frontMainMaterial)
+    frontMain.castShadow = true
+    frontMain.receiveShadow = true
+    Hotel.add(frontMain)
+    var frontTopShape = frontMainShape
+    var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
+    var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
+    frontTop.position.y = 100
+    Hotel.add(frontTop)
+
+    var frontMainShape = utils.makeShape(frontMainCoords4)
+    var frontMainGeometry = utils.makeExtrudeGeometry(frontMainShape, 10)
+    var frontMainMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
+    frontMainMaterial.map.repeat.set(0.1, 0.08)
+    var frontMain = new THREE.Mesh(frontMainGeometry, frontMainMaterial)
+    frontMain.castShadow = true
+    frontMain.receiveShadow = true
+    frontMain.position.y = 180
+    Hotel.add(frontMain)
+
+    var frontTopShape = frontMainShape
+    var frontTopGeometry = utils.makeExtrudeGeometry(frontTopShape, 5)
+    var frontTop = utils.makeMesh('lambert', frontTopGeometry, 0xb1a7af)
+    frontTop.position.y = 190
+    Hotel.add(frontTop)
 
     // var frontRoofShelfGeometry = new THREE.Geometry()
     // var frontRoofShelfCubeGeometry = new THREE.BoxGeometry(2, 2, 40)
@@ -73,33 +135,39 @@ function createHospital() {
     // frontRoofShelfGeometry = new THREE.BufferGeometry().fromGeometry(frontRoofShelfGeometry)
     // var frontRoofShelf = utils.makeMesh('phong', frontRoofShelfGeometry, 0xffffff)
     // frontRoofShelf.position.set(-70, 115, 5)
-    // hospital.add(frontRoofShelf)
+    // Hotel.add(frontRoofShelf)
 
-    // var frontPlatGeometry = new THREE.BoxBufferGeometry(150, 3, 90)
-    // var fronPlat = utils.makeMesh('lambert', frontPlatGeometry, 0x0792a5)
-    // fronPlat.position.set(-3, 18, 25)
-    // hospital.add(fronPlat)
 
-    // var frontPlatVerticalGeometry = new THREE.BoxBufferGeometry(150, 15, 3)
-    // var frontPlatVertical = utils.makeMesh('phong', frontPlatVerticalGeometry, 0x0792a5)
-    // frontPlatVertical.receiveShadow = false
-    // frontPlatVertical.position.set(-3, 24, 68.5)
-    // hospital.add(frontPlatVertical)
+    // 蓝色穿插屋顶
+    var frontPlatGeometry = new THREE.BoxBufferGeometry(20, 2, 10)
+    var fronPlat = utils.makeMesh('lambert', frontPlatGeometry, 0x0792a5)
+    fronPlat.position.set(0, 20, 35)
+    Hotel.add(fronPlat)
 
-    // var frontPlatVerticalWhiteGeometry = new THREE.BoxBufferGeometry(150, 3, 3)
-    // var frontPlatVerticalWhite = utils.makeMesh('phong', frontPlatVerticalWhiteGeometry, 0xffffff)
-    // frontPlatVerticalWhite.position.set(-3, 33, 68.5)
-    // hospital.add(frontPlatVerticalWhite)
+    var frontPlatVerticalGeometry = new THREE.BoxBufferGeometry(20, 3, 1)
+    var frontPlatVertical = utils.makeMesh('phong', frontPlatVerticalGeometry, 0x0792a5)
+    frontPlatVertical.receiveShadow = false
+    frontPlatVertical.position.set(0, 22, 40)
+    Hotel.add(frontPlatVertical)
 
-    // var frontPlatPillarGeometry = new THREE.CylinderGeometry(2, 2, 15, 32)
-    // var frontPlatPillar = utils.makeMesh('lambert', frontPlatPillarGeometry, 0xffffff)
-    // frontPlatPillar.position.set(-60, 10, 55)
-    // hospital.add(frontPlatPillar)
+    var frontPlatVerticalWhiteGeometry = new THREE.BoxBufferGeometry(20, 1, 1)
+    var frontPlatVerticalWhite = utils.makeMesh('phong', frontPlatVerticalWhiteGeometry, 0xffffff)
+    frontPlatVerticalWhite.position.set(0, 23, 40)
+    Hotel.add(frontPlatVerticalWhite)
 
-    // var frontPlatPillar2 = frontPlatPillar.clone()
-    // frontPlatPillar2.position.set(55, 10, 55)
-    // hospital.add(frontPlatPillar2)
 
+    // 柱子
+    var frontPlatPillarGeometry = new THREE.CylinderGeometry(1, 1, 20, 32)
+    var frontPlatPillar = utils.makeMesh('lambert', frontPlatPillarGeometry, 0xffffff)
+    frontPlatPillar.position.set(-7.5, 10, 38)
+    Hotel.add(frontPlatPillar)
+
+    var frontPlatPillar2 = frontPlatPillar.clone()
+    frontPlatPillar2.position.set(7.5, 10, 38)
+    Hotel.add(frontPlatPillar2)
+
+
+    // // 前方大柱子
     // var frontBorderVerticles = new THREE.Object3D()
     // var frontBorderVerticleGeometry = new THREE.BoxBufferGeometry(4, 106, 4)
     // var frontBorderVerticleMesh = utils.makeMesh('phong', frontBorderVerticleGeometry, 0xffffff)
@@ -112,7 +180,7 @@ function createHospital() {
     // var frontBorderVerticle3 = frontBorderVerticleMesh.clone()
     // frontBorderVerticle3.position.set(50, 52, -18)
     // frontBorderVerticles.add(frontBorderVerticle3)
-    // hospital.add(frontBorderVerticles)
+    // Hotel.add(frontBorderVerticles)
 
     // var frontRoofCoords = [
     // [-82, -32],
@@ -134,8 +202,10 @@ function createHospital() {
     // var frontRoofGeometry = utils.makeExtrudeGeometry(frontRoofShape, 8)
     // var frontRoof = utils.makeMesh('phong', frontRoofGeometry, 0xffffff)
     // frontRoof.position.y = 100
-    // hospital.add(frontRoof)
+    // Hotel.add(frontRoof)
 
+
+    // // 后面的楼
     // var backMainCoords = [
     // [-80, 20],
     // [-80, 60],
@@ -154,7 +224,7 @@ function createHospital() {
 
     // var backMainGeometry = utils.makeExtrudeGeometry(backMainShape, 90)
     // var backMain = utils.makeMesh('lambert', backMainGeometry, 0xf2e21b)
-    // hospital.add(backMain)
+    // Hotel.add(backMain)
 
     // var backMiddleCoords = [
     // [0, 0],
@@ -179,7 +249,7 @@ function createHospital() {
     // backMiddle.position.y = 86
     // backMiddle.position.z = -58
     // backMiddle.position.x = -78
-    // hospital.add(backMiddle)
+    // Hotel.add(backMiddle)
 
     // var backMiddleWindowGeometry = new THREE.PlaneGeometry(32, 66, 1, 1)
     // var backMiddleWindowMaterial = new THREE.MeshPhongMaterial({ map: textures.window() })
@@ -188,7 +258,7 @@ function createHospital() {
     // var backMiddleWindow = new THREE.Mesh(backMiddleWindowGeometry, backMiddleWindowMaterial)
     // backMiddleWindow.position.set(83, 51, -40)
     // backMiddleWindow.rotation.y = 0.5 * Math.PI
-    // hospital.add(backMiddleWindow)
+    // Hotel.add(backMiddleWindow)
 
     // var windowBackOrigin = createWindow()
     // windowBackOrigin.scale.set(0.6, 0.6, 1)
@@ -199,11 +269,11 @@ function createHospital() {
     //     var windowObj = windowBackOrigin.clone()
     //     windowObj.position.x -= i * 22
     //     windowObj.position.y -= j * 20
-    //     hospital.add(windowObj)
+    //     Hotel.add(windowObj)
     // }
     // }
 
-    return hospital	
+    return Hotel	
 }
 
 function createWindow() {

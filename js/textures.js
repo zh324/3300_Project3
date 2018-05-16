@@ -7,7 +7,7 @@ var textures = {
       canvas.height = 32
   
       var colors = {
-        border: '#3c3443',
+        border: '#baeaf2',
         top: '#9d94a7',
         bottom: '#796e8c'
       }
