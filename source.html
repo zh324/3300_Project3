@@ -225,6 +225,7 @@
 		<script src="js/toolTip.js"></script>
 		<script src="js/buildHotel.js"></script>
 		<script src="js/buildRestaurant.js"></script>
+		<script src="js/buildEntertainment.js"></script>
 		<script src="js/buildRoads.js"></script>
 		<script src="js/buildTrees.js"></script>
 
@@ -331,18 +332,22 @@
 			// 	})
 			// ];
 
-			var Hotel = createHotel();
-			console.log(Hotel);
+			// var Hotel = createHotel();
+			// console.log(Hotel);
 			// initialize on text
 			textInit();
 
 			// add initial hotel
 			var hotel = createHotel();
 
-				console.log(hotel);
 
 			// add initial restaurant
 			var restaurant =  createRestaurant();
+
+
+			// add initial restaurant
+			var entertainment =  createEntertainment();
+
 
     
 
@@ -435,7 +440,7 @@
 				//tree
 				addTrees();
 
-				// addRestaurant(500, -200)
+				addRestaurant(500, -100)
 
 			}
 
@@ -512,7 +517,7 @@
 					scene.add( object );
 
 				} else if (objectType == "entertainment") {
-					var object = hotel.clone();
+					var object = entertainment.clone();
 					              
 					object.position.copy (position)
 			
