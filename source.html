@@ -228,6 +228,8 @@
 		<script src="js/buildEntertainment.js"></script>
 		<script src="js/buildRoads.js"></script>
 		<script src="js/buildTrees.js"></script>
+		<script src="js/Cars.js"></script>
+		<script src="js/buildCars.js"></script>
 
 
 		<script>
@@ -263,11 +265,27 @@
 			var spritey;
 			var canvas1, context1, texture1;
 
-
 			// textinfo
 			var nameInfo, typeInfo, priceInfo, ratingInfo, addressInfo;
 			var positionArray = [];
 
+			var hotelColors = [
+				{
+					border: '#baeaf2',
+					top: '#9d94a7',
+					bottom: '#796e8c'
+				},
+				{
+					border: '#99CFCD',
+					top: "#329B9C",
+					bottom: "#329B9C"
+				},
+				{
+					border: '#F1E7E5',
+					top: "#3A3A56",
+					bottom: "#3A3A56"
+				}
+			];
 
 			// var materialsRestaurant = [
 			// 	new THREE.MeshBasicMaterial({
@@ -440,8 +458,205 @@
 				//tree
 				addTrees();
 
-				addRestaurant(500, -100)
+				buildStaticCars();
+				buildMovingCars();
+				loop();
 
+
+			}
+
+			var cars = [];
+			var cars2 = [];
+			// 生成汽车
+			function buildStaticCars () {
+				var carsPosition = [
+					[-1700, -1200, 1.5], 
+					[-1700, -1400, 1.5], 
+					[-1700, -1600, 1.5], 
+					[-1700, -1800, 1.5],
+
+					[-1800, -2000, 1.5],
+					[-1800, -2200, 1.5],
+					[-1800, -2400, 1.5],
+					[-1800, -2600, 1.5],
+
+					[-500, -1200, 1.5], 
+					[-500, -1400, 1.5], 
+					[-500, -1600, 1.5], 
+					[-500, -1800, 1.5],
+
+					[-400, -2000, 1.5],
+					[-400, -2200, 1.5],
+					[-400, -2400, 1.5],
+					[-400, -2600, 1.5],
+
+					[500, -1200, 1.5], 
+					[500, -1400, 1.5], 
+					[500, -1600, 1.5], 
+					[500, -1800, 1.5],
+
+					[400, -2000, 1.5],
+					[400, -2200, 1.5],
+					[400, -2400, 1.5],
+					[400, -2600, 1.5],
+
+					[1700, -1200, 1.5], 
+					[1700, -1400, 1.5], 
+					[1700, -1600, 1.5], 
+					[1700, -1800, 1.5],
+
+					[1600, -2000, 1.5],
+					[1600, -2200, 1.5],
+					[1600, -2400, 1.5],
+					[1600, -2600, 1.5],
+
+					[2500, -1200, 1.5], 
+					[2500, -1400, 1.5], 
+					[2500, -1600, 1.5], 
+					[2500, -1800, 1.5],
+
+					[2600, -2000, 1.5],
+					[2600, -2200, 1.5],
+					[2600, -2400, 1.5],
+					[2600, -2600, 1.5],
+
+					[3400, -1200, 1.5], 
+					[3400, -1400, 1.5], 
+					[3400, -1600, 1.5], 
+					[3400, -1800, 1.5],
+
+					[3500, -2000, 1.5],
+					[3500, -2200, 1.5],
+					[3500, -2400, 1.5],
+					[3500, -2600, 1.5],
+
+					//bottom
+					[800, 800, 1.5], 
+					[800, 1000, 1.5], 
+					[800, 1200, 1.5], 
+					[800, 1400, 1.5],
+
+					[700, 1600, 1.5],
+					[700, 1800, 1.5],
+					[700, 2000, 1.5],
+					[700, 2200, 1.5],
+
+					[1100, 800, 1.5], 
+					[1100, 1000, 1.5], 
+					[1100, 1200, 1.5], 
+					[1100, 1400, 1.5],
+
+					[1900, 1600, 1.5],
+					[1900, 1800, 1.5],
+					[1900, 2000, 1.5],
+					[1900, 2200, 1.5],
+
+					[1700, 800, 1.5], 
+					[1700, 1000, 1.5], 
+					[1700, 1200, 1.5], 
+					[1700, 1400, 1.5],
+
+					[700, 1600, 1.5],
+					[700, 1800, 1.5],
+					[700, 2000, 1.5],
+					[700, 2200, 1.5],
+
+					[-200, 800, 1.5], 
+					[-200, 1000, 1.5], 
+					[-200, 1200, 1.5], 
+					[-200, 1400, 1.5],
+
+					[-100, 1600, 1.5],
+					[-100, 1800, 1.5],
+					[-100, 2000, 1.5],
+					[-100, 2200, 1.5],
+
+					[-1100, 800, 1.5], 
+					[-1100, 1000, 1.5], 
+					[-1100, 1200, 1.5], 
+					[-1100, 1400, 1.5],
+
+					[-1000, 1600, 1.5],
+					[-1000, 1800, 1.5],
+					[-1000, 2000, 1.5],
+					[-1000, 2200, 1.5],
+
+					[-2200, 800, 1.5], 
+					[-2200, 1000, 1.5], 
+					[-2200, 1200, 1.5], 
+					[-2200, 1400, 1.5],
+
+					[-2300, 1600, 1.5],
+					[-2300, 1800, 1.5],
+					[-2300, 2000, 1.5],
+					[-2300, 2200, 1.5],
+
+
+					[-3100, 800, 1.5], 
+					[-3100, 1000, 1.5], 
+					[-3100, 1200, 1.5], 
+					[-3100, 1400, 1.5],
+
+					[-3200, 1600, 1.5],
+					[-3200, 1800, 1.5],
+					[-3200, 2000, 1.5],
+					[-3200, 2200, 1.5],
+					
+				]
+				carsPosition.forEach(function (elem) {	
+					var car = new Car()
+					var x = elem[0],
+						z = elem[1],
+						r = elem[2]
+					car.setPosition(x, -200, z)
+					car.mesh.rotation.y = r * Math.PI
+					scene.add(car.mesh)
+				})
+			}
+
+			function buildMovingCars() {
+				var y1 = -950;
+				var y2 = 2600;
+				var y3 = 2500;
+				var y4 = -900;
+				var carsPosition = []
+
+				for (i = 0; i < 100; i++) {
+					carsPosition.push([-500 - i * 500, y1, 0]);
+					carsPosition.push([-400 - i * 500, y2, 0]);
+					carsPosition.push([-300 - i * 500, y3, 0]);
+					carsPosition.push([-200 - i * 500, y4, 0]);
+				}
+				carsPosition.forEach(function(elem) {
+					var car = new Car()
+					var x = elem[0],
+					z = elem[1],
+					r = elem[2]
+					car.setPosition(x, -200, z)
+					car.mesh.rotation.y = r * Math.PI
+					cars.push(car)
+					scene.add(car.mesh)
+				})
+			}
+
+
+			function carMoving(car) {
+				var angle = car.mesh.rotation.y
+				var x = car.mesh.position.x,
+				z = car.mesh.position.z
+
+				if (x < 3000) {
+					car.forward();
+				}
+			}
+
+			function loop() {
+				// stats.update()
+				cars.forEach(function(car) {
+					carMoving(car)
+				})
+				renderer.render(scene, camera)
+				requestAnimationFrame(loop)
 			}
 
 
@@ -503,30 +718,31 @@
 			function addSplineObject(objectType, position, name, price, rating, region, address, phone, website, colorStr) {
 
 				if (objectType == "restaurant") {
-					var object = restaurant.clone();
-					 
+					var object = hotel.clone();
 					object.position.copy (position)
-			
 					scene.add( object );
 					
 				} else if (objectType == "hotel") {
-					var object = hotel.clone();
-					              
-					object.position.copy (position)
-			
+					var object = hotel.clone();             
+					object.position.copy (position);
+					// object.children[5].material.map.image.getContext('2d').fillStyle = hotelColors[Math.floor(Math.random() * hotelColors.length)].top;
+					// console.log(object.children[1].material.map.image.getContext('2d').fillStyle)
+					// console.log(object.children[3].material.map.image.getContext('2d').fillStyle)
+					// console.log(object.children[7].material.map.image.getContext('2d').fillStyle)
 					scene.add( object );
 
 				} else if (objectType == "entertainment") {
+<<<<<<< HEAD
 					var object = entertainment.clone();
 					              
+=======
+					var object = hotel.clone();				              
+>>>>>>> 65d4364fa8c7cd75570c1663a3aae63ab0030a4c
 					object.position.copy (position)
-			
 					scene.add( object );
 				}
 
-				
 				positionArray.push(position);
-
 				object.castShadow = true;
 				object.receiveShadow = true;
 
@@ -546,7 +762,6 @@
 
 
 					textUpdate(name, price, rating, region, address, phone, website);
-					console.log(object.position);
 				});
 				object.on('mouseout', function(ev) {
 					// scene.remove( spritex );
