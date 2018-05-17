@@ -154,7 +154,7 @@ function buildMovingCars() {
     var y4 = -900;
     var carsPosition = []
 
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 10; i++) {
         carsPosition.push([-500 - i * 500, y1, 0]);
         carsPosition.push([-400 - i * 500, y2, 0]);
         carsPosition.push([-300 - i * 500, y3, 0]);
