@@ -718,7 +718,7 @@
 			function addSplineObject(objectType, position, name, price, rating, region, address, phone, website, colorStr) {
 
 				if (objectType == "restaurant") {
-					var object = hotel.clone();
+					var object = restaurant.clone();
 					object.position.copy (position)
 					scene.add( object );
 					
@@ -732,12 +732,8 @@
 					scene.add( object );
 
 				} else if (objectType == "entertainment") {
-<<<<<<< HEAD
 					var object = entertainment.clone();
 					              
-=======
-					var object = hotel.clone();				              
->>>>>>> 65d4364fa8c7cd75570c1663a3aae63ab0030a4c
 					object.position.copy (position)
 					scene.add( object );
 				}
