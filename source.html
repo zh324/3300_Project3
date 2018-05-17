@@ -17,8 +17,9 @@
 				<div class="instructions" id="buildingName"></div>
 				<div id="buildingPrice"></div>
 				<div id="buildingRating"></div>
-				<div id="buildingRegion"></div>
 				<div id="buildingAddress"></div>
+				<div id="buildingPhone"></div>
+				<div id="buildingWebsite"></div>
 		</div>
 
 		<div style="margin-bottom: 20px" class="controls-container card">
@@ -330,7 +331,8 @@
 			// 	})
 			// ];
 
-
+			var Hotel = createHotel();
+			console.log(Hotel);
 			// initialize on text
 			textInit();
 
@@ -427,13 +429,13 @@
 				// sprite
 				var spritex;		
 				
-				
 				//road
 				buildRoad();
 
 				//tree
 				addTrees();
 
+				// addRestaurant(500, -200)
 
 			}
 
@@ -493,7 +495,7 @@
 			}
 
 
-			function addSplineObject(objectType, position, name, price, rating, region, address, colorStr) {
+			function addSplineObject(objectType, position, name, price, rating, region, address, phone, website, colorStr) {
 
 				if (objectType == "restaurant") {
 					var object = restaurant.clone();
@@ -516,8 +518,8 @@
 			
 					scene.add( object );
 				}
-				
 
+				
 				positionArray.push(position);
 
 				object.castShadow = true;
@@ -538,7 +540,8 @@
 					// scene.add( spritex );
 
 
-					textUpdate(name, price, rating, region, address);
+					textUpdate(name, price, rating, region, address, phone, website);
+					console.log(object.position);
 				});
 				object.on('mouseout', function(ev) {
 					// scene.remove( spritex );
@@ -550,17 +553,17 @@
 
 			function plot() {
 				for (var i = 0; i < hotelData.length; i++) {
-					var object = addSplineObject("hotel", new THREE.Vector3(hotelData[i].coordinate[0], -200, hotelData[i].coordinate[1]), hotelData[i]["Company Name"], hotelData[i]["Price"], hotelData[i]["Rating"], hotelData[i]["Region"], hotelData[i]["Address"], "green");
+					var object = addSplineObject("hotel", new THREE.Vector3(hotelData[i].coordinate[0], -200, hotelData[i].coordinate[1]), hotelData[i]["Company Name"], hotelData[i]["Price"], hotelData[i]["Rating"], hotelData[i]["Region"], hotelData[i]["Address"], hotelData[i]["Phone"], hotelData[i]["Website"], "green");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < restaurantData.length; i++) {
-					var object = addSplineObject("restaurant", new THREE.Vector3(restaurantData[i].coordinate[0], -200, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"], restaurantData[i]["Price"], restaurantData[i]["Rating"], restaurantData[i]["Region"], restaurantData[i]["Address"], "red");
+					var object = addSplineObject("restaurant", new THREE.Vector3(restaurantData[i].coordinate[0], -200, restaurantData[i].coordinate[1]), restaurantData[i]["Company Name"], restaurantData[i]["Price"], restaurantData[i]["Rating"], restaurantData[i]["Region"], restaurantData[i]["Address"], restaurantData[i]["Phone"], restaurantData[i]["Website"], "red");
 					objectCount++;
 					positions.push(object.position);
 				}
 				for (var i = 0; i < entertainmentData.length; i++) {
-					var object = addSplineObject("entertainment", new THREE.Vector3(entertainmentData[i].coordinate[0], -200, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"],  entertainmentData[i]["Price"], entertainmentData[i]["Rating"], entertainmentData[i]["Region"], entertainmentData[i]["Address"],"yellow");			
+					var object = addSplineObject("entertainment", new THREE.Vector3(entertainmentData[i].coordinate[0], -200, entertainmentData[i].coordinate[1]), entertainmentData[i]["Company Name"],  entertainmentData[i]["Price"], entertainmentData[i]["Rating"], entertainmentData[i]["Region"], entertainmentData[i]["Address"], entertainmentData[i]["Phone"], entertainmentData[i]["Website"], "yellow");			
 					objectCount++;
 					positions.push(object.position);
 				}					
