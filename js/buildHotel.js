@@ -275,32 +275,3 @@ function createHotel() {
 
     return Hotel	
 }
-
-function createWindow() {
-    var windowObj = new THREE.Object3D()
-    var glassGeometry = new THREE.PlaneGeometry(20, 20)
-    var glass = utils.makeMesh('phong', glassGeometry, 0x6a5e74)
-    windowObj.add(glass)
-
-    var windowBorderGeometry = new THREE.BoxBufferGeometry(22, 2, 2)
-    var windowBorder = utils.makeMesh('phong', windowBorderGeometry, 0xffffff)
-
-    var windowBorderTop = windowBorder.clone()
-    windowBorderTop.position.y = 10
-    windowObj.add(windowBorderTop)
-
-    var windowBorderBottom = windowBorder.clone()
-    windowBorderBottom.position.y = -10
-    windowObj.add(windowBorderBottom)
-
-    var windowBorderLeft = windowBorder.clone()
-    windowBorderLeft.rotation.z = 0.5 * Math.PI
-    windowBorderLeft.position.x = -10
-    windowObj.add(windowBorderLeft)
-
-    var windowBorderRight = windowBorderLeft.clone()
-    windowBorderRight.position.x = 10
-    windowObj.add(windowBorderRight)
-
-    return windowObj
-}
