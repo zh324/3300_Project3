@@ -72,13 +72,19 @@ a {
 }
 .instructions {
   margin: 0px 0;
-  padding: 0 35px;
+  padding: 0 30px;
+  padding-top: 10px;
   font-size: 15px;
   line-height: 1.2rem;
   color: #999;
   opacity: 1;
   transition: opacity 500ms linear 400ms;
 }
+
+.infoTitle {
+  font-size: 22px;
+}
+
 .links {
   padding: 0 35px;
   margin: 5px 0 0;
@@ -228,4 +234,3 @@ font-size: 14px;
 color: #445870;
 text-align: left;
 }
-
