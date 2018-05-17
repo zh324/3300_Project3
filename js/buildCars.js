@@ -179,7 +179,7 @@ function carMoving(car) {
     z = car.mesh.position.z
 
     if (x < 3000) {
-        car.forward();
+        car.forward(10);
     }
 }
 
