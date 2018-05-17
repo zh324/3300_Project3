@@ -107,7 +107,7 @@ function addTrees() {
     treeTrunk.position.y = 8
     tree.add(treeTrunk)
 
-    var treeLeafsGeometry = new THREE.SphereGeometry( 20, 32, 32 );
+    var treeLeafsGeometry = new THREE.SphereGeometry( 30, 8, 4 );
 
     var treeColor = randomTreeColor();
     var treeLeafs = utils.makeMesh('lambert', treeLeafsGeometry, treeColor)
