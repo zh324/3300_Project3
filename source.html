@@ -225,6 +225,7 @@
 		<script src="js/toolTip.js"></script>
 		<script src="js/buildHotel.js"></script>
 		<script src="js/buildRestaurant.js"></script>
+		<script src="js/buildEntertainment.js"></script>
 		<script src="js/buildRoads.js"></script>
 		<script src="js/buildTrees.js"></script>
 		<script src="js/Cars.js"></script>
@@ -292,8 +293,16 @@
 			// add initial hotel
 			var hotel = createHotel();
 
+
 			// add initial restaurant
 			var restaurant =  createRestaurant();
+
+
+			// add initial restaurant
+			var entertainment =  createEntertainment();
+
+
+    
 
 			
 			//load csv file
@@ -460,7 +469,8 @@
 					scene.add( object );
 
 				} else if (objectType == "entertainment") {
-					var object = hotel.clone();				              
+					var object = entertainment.clone();
+					              
 					object.position.copy (position)
 					scene.add( object );
 				}

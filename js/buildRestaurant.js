@@ -13,7 +13,7 @@ function createRestaurant() {
 
     // 白色基地
     var baseGeometry = new THREE.BoxBufferGeometry(80, 3, 80)
-    var base = utils.makeMesh('lambert', baseGeometry, 0xffffff)
+    var base = utils.makeMesh('lambert', baseGeometry, "#2e1915")
     base.position.y = 1
     Restaurant.add(base)
 
@@ -222,20 +222,16 @@ function createRestaurant() {
     var backMainShape = utils.makeShape(backMainCoords)
 
     var backMainGeometry = utils.makeExtrudeGeometry(backMainShape, 60)
-    var backMain = utils.makeMesh('lambert', backMainGeometry, "#3B3C4E")
+    var backMain = utils.makeMesh('lambert', backMainGeometry, "#bf0000")
     Restaurant.add(backMain)
 
     var backTopShape = backMainShape
-    var backTopGeometry = utils.makeExtrudeGeometry(backTopShape, 10)
-    var backTop = utils.makeMesh('lambert', backTopGeometry, "#899FB8")
+    var backTopGeometry = utils.makeExtrudeGeometry(backTopShape, 5)
+    var backTop = utils.makeMesh('lambert', backTopGeometry, "#5E3A35")
     backTop.position.y = 60
     Restaurant.add(backTop)
 
-    var backTopShape = backMainShape
-    var backTopGeometry = utils.makeExtrudeGeometry(backTopShape, 10)
-    var backTop = utils.makeMesh('lambert', backTopGeometry, "#899FB8")
-    backTop.position.y = 60
-    Restaurant.add(backTop)
+
 
 
 
@@ -325,7 +321,7 @@ function createRestaurant() {
     // backMiddleWindow.rotation.y = 0.5 * Math.PI
     // Restaurant.add(backMiddleWindow)
 
-    var windowBackOrigin = createWindow()
+    var windowBackOrigin = createWindow1()
     windowBackOrigin.scale.set(0.5, 0.5, 0.6)
     // windowBackOrigin.rotation.y = Math.PI
     windowBackOrigin.position.set(26, 40, 25)
@@ -338,7 +334,7 @@ function createRestaurant() {
     }
     }
 
-    var windowBackOrigin2 = createWindow()
+    var windowBackOrigin2 = createWindow1()
     windowBackOrigin2.scale.set(0.5, 0.5, 0.6)
     // windowBackOrigin.rotation.y = Math.PI
     windowBackOrigin2.position.set(5, 40, 25)
@@ -351,7 +347,7 @@ function createRestaurant() {
     }
     }
 
-    var windowBackOrigin3 = createDoor()
+    var windowBackOrigin3 = createDoor1()
     windowBackOrigin3.scale.set(0.5, 1, 0.3)
     // windowBackOrigin.rotation.y = Math.PI
     windowBackOrigin3.position.set(-20, 30, 25)
@@ -372,14 +368,14 @@ function createRestaurant() {
 
 
 
-function createWindow() {
+function createWindow1() {
     var windowObj = new THREE.Object3D()
     var glassGeometry = new THREE.PlaneGeometry(20, 18)
-    var glass = utils.makeMesh('phong', glassGeometry, "#2F6BA7")
+    var glass = utils.makeMesh('phong', glassGeometry, "#d0dfff")
     windowObj.add(glass)
 
     var windowBorderGeometry = new THREE.BoxBufferGeometry(25, 2, 2)
-    var windowBorder = utils.makeMesh('phong', windowBorderGeometry, 0xffffff)
+    var windowBorder = utils.makeMesh('phong', windowBorderGeometry, " #5F8EBA")
 
     var windowBorderTop = windowBorder.clone()
     windowBorderTop.position.y = 10
@@ -402,14 +398,14 @@ function createWindow() {
 }
 
 
-function createDoor() {
+function createDoor1() {
     var windowObj = new THREE.Object3D()
     var glassGeometry = new THREE.PlaneGeometry(20, 18)
-    var glass = utils.makeMesh('phong', glassGeometry, "#2F6BA7")
+    var glass = utils.makeMesh('phong', glassGeometry, "#d0dfff")
     windowObj.add(glass)
 
     var windowBorderGeometry = new THREE.BoxBufferGeometry(20, 1, 2)
-    var windowBorder = utils.makeMesh('phong', windowBorderGeometry, 0xffffff)
+    var windowBorder = utils.makeMesh('phong', windowBorderGeometry, "white")
 
     var windowBorderTop = windowBorder.clone()
     windowBorderTop.position.y = 10
